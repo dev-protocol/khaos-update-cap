@@ -20,7 +20,7 @@ export const createGraphQLPropertyAuthenticationFetcher = (
 	fetcher: bent.RequestFunction<bent.ValidResponse>
 ) => async (
 	offset = 0
-): Promise<GraphQLPropertyPropertyAuthenticationResponse> =>
+): Promise<GraphQLPropertyAuthenticationPropertyResponse> =>
 	fetcher('/', {
 		query: `{
 				property_authentication(
@@ -32,7 +32,7 @@ export const createGraphQLPropertyAuthenticationFetcher = (
 				}
 			}`,
 	}).then(
-		(r) => (r as unknown) as GraphQLPropertyPropertyAuthenticationResponse
+		(r) => (r as unknown) as GraphQLPropertyAuthenticationPropertyResponse
 	)
 
 export const graphql = (
@@ -52,7 +52,7 @@ export type GraphQLPropertyLockupSumValuesResponse = {
 	}
 }
 
-export type GraphQLPropertyPropertyAuthenticationResponse = {
+export type GraphQLPropertyAuthenticationPropertyResponse = {
 	readonly data: {
 		readonly property_authentication: ReadonlyArray<{
 			readonly property: string

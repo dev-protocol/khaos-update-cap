@@ -7,7 +7,7 @@ import {
 	createGraphQLPropertyAuthenticationFetcher,
 	graphql,
 	GraphQLPropertyLockupSumValuesResponse,
-	GraphQLPropertyPropertyAuthenticationResponse,
+	GraphQLPropertyAuthenticationPropertyResponse,
 } from './graphql'
 
 test('get the data for lockup sum values.', async (t) => {
@@ -44,10 +44,10 @@ test('Property_authintication data can be retrieved.', async (t) => {
 	)
 	const lockupSumValues = await (async () =>
 		new Promise<
-			GraphQLPropertyPropertyAuthenticationResponse['data']['property_authentication']
+			GraphQLPropertyAuthenticationPropertyResponse['data']['property_authentication']
 		>((resolve) => {
 			const f = async (
-				prev: GraphQLPropertyPropertyAuthenticationResponse['data']['property_authentication'] = []
+				prev: GraphQLPropertyAuthenticationPropertyResponse['data']['property_authentication'] = []
 			): Promise<void> => {
 				const { data } = await fetchGraphQL()
 				const { property_authentication: items } = data
