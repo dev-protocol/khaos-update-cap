@@ -1,32 +1,6 @@
-# Khaos Starter Kit
+# Khaos Update Cap
 
-How to start developing Khaos Functions
-
-## Environment
-
-First, fork this repository.
-
-Then clone the forked repository.
-
-```bash
-git clone git@github.com:your/khaos-starter-kit.git
-cd khaos-starter-kit
-```
-
-## Development
-
-Edit the file in the `src` directory. You have to edit the following files:
-
-- src/abi.ts
-- src/addresses.ts
-- src/authorize.ts
-- src/event.ts
-- src/oraclize.ts
-- src/pack.ts
-
-And update the tests.
-
-You can add or remove dependencies if you want.
+update cap of DEV Protocol
 
 ## Deployment
 

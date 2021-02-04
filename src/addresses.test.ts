@@ -1,12 +1,40 @@
+/* eslint-disable functional/no-let */
+/* eslint-disable functional/prefer-readonly-type */
 import test from 'ava'
+import sinon from 'sinon'
+import { ethers } from 'ethers'
 import { addresses } from './addresses'
+import { getLockupAddress } from './test-utils'
+import * as contractModules from './contract'
 
-test('Returns mainnet address', async (t) => {
-	const res = await addresses({ network: 'mainnet' })
-	t.is(res, '0x1510EA12a30E5c40b406660871b335feA32f29A')
+let stub: sinon.SinonStub<[network: string], ethers.providers.BaseProvider>
+test.before(() => {
+	const mainnetProvider = ethers.getDefaultProvider('homestead')
+	const ropstenProvider = ethers.getDefaultProvider('ropsten')
+	stub = sinon.stub(contractModules, 'getProvider')
+	stub.withArgs('mainnet').returns(mainnetProvider)
+	stub.withArgs('ropsten').returns(ropstenProvider)
 })
 
-test('Returns ropsten address', async (t) => {
+test('Returns mainnet lockup address', async (t) => {
+	const provider = ethers.getDefaultProvider('homestead')
+	const res = await addresses({ network: 'mainnet' })
+	const lockupAddress = await getLockupAddress(
+		'0x1D415aa39D647834786EB9B5a333A50e9935b796',
+		provider
+	)
+	t.is(res, lockupAddress)
+})
+
+test('Returns ropsten lockup address', async (t) => {
+	const provider = ethers.getDefaultProvider('ropsten')
 	const res = await addresses({ network: 'ropsten' })
-	t.is(res, '0x609Fe85Dbb9487d55B5eF50451e20ba2Edc8F4B7')
+	const lockupAddress = await getLockupAddress(
+		'0xD6D07f1c048bDF2B3d5d9B6c25eD1FC5348D0A70',
+		provider
+	)
+	t.is(res, lockupAddress)
+})
+test.after(() => {
+	stub.restore()
 })
