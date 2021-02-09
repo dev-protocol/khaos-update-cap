@@ -1,6 +1,6 @@
 import bent from 'bent'
 
-export const createGraphQLPropertyLockupSumValuesFetcher = (
+const createGraphQLPropertyLockupSumValuesFetcher = (
 	fetcher: bent.RequestFunction<bent.ValidResponse>
 ) => async (offset = 0): Promise<GraphQLPropertyLockupSumValuesResponse> =>
 	fetcher('/', {
@@ -16,7 +16,7 @@ export const createGraphQLPropertyLockupSumValuesFetcher = (
 	}).then((r) => (r as unknown) as GraphQLPropertyLockupSumValuesResponse)
 
 // TODO 結局Marketだけにするか、どうするか確認
-export const createGraphQLPropertyAuthenticationFetcher = (
+const createGraphQLPropertyAuthenticationFetcher = (
 	fetcher: bent.RequestFunction<bent.ValidResponse>
 ) => async (
 	offset = 0
@@ -35,15 +35,13 @@ export const createGraphQLPropertyAuthenticationFetcher = (
 		(r) => (r as unknown) as GraphQLPropertyAuthenticationPropertyResponse
 	)
 
-export const graphql = (
-	network: string
-): bent.RequestFunction<bent.ValidResponse> => {
+const graphql = (network: string): bent.RequestFunction<bent.ValidResponse> => {
 	// eslint-disable-next-line @typescript-eslint/no-non-null-assertion
 	const endpoint = process.env[`KHAOS_${network.toUpperCase()}_GRAPHQL`]!
 	return bent(endpoint, 'POST', 'json')
 }
 
-export type GraphQLPropertyLockupSumValuesResponse = {
+type GraphQLPropertyLockupSumValuesResponse = {
 	readonly data: {
 		readonly property_lockup_sum_values: ReadonlyArray<{
 			readonly property_address: string
@@ -52,10 +50,65 @@ export type GraphQLPropertyLockupSumValuesResponse = {
 	}
 }
 
-export type GraphQLPropertyAuthenticationPropertyResponse = {
+type GraphQLPropertyAuthenticationPropertyResponse = {
 	readonly data: {
 		readonly property_authentication: ReadonlyArray<{
 			readonly property: string
 		}>
 	}
+}
+
+function sleep(milliseconds: number): Promise<void> {
+	return new Promise((resolve) => setTimeout(resolve, milliseconds))
+}
+
+export const getLockupSumValues = async (
+	network: string
+): Promise<
+	readonly {
+		readonly property_address: string
+		readonly sum_values: string
+	}[]
+> => {
+	const fetchGraphQL = createGraphQLPropertyLockupSumValuesFetcher(
+		graphql(network)
+	)
+	type R = GraphQLPropertyLockupSumValuesResponse['data']['property_lockup_sum_values']
+	const lockupSumValues = await (async () => {
+		const f = async (i = 0, prev: R = []): Promise<R> => {
+			// eslint-disable-next-line functional/no-expression-statement
+			await sleep(1000)
+			const { data } = await fetchGraphQL(i)
+			const { property_lockup_sum_values: items } = data
+			const next = [...prev, ...items]
+			return items.length > 0 ? f(i + items.length, next) : next
+		}
+		return f()
+	})()
+	return lockupSumValues
+}
+
+export const getAuthinticatedProperty = async (
+	network: string
+): Promise<
+	readonly {
+		readonly property: string
+	}[]
+> => {
+	const fetchGraphQL = createGraphQLPropertyAuthenticationFetcher(
+		graphql(network)
+	)
+	type R = GraphQLPropertyAuthenticationPropertyResponse['data']['property_authentication']
+	const authinticatedPropertoes = await (async () => {
+		const f = async (i = 0, prev: R = []): Promise<R> => {
+			// eslint-disable-next-line functional/no-expression-statement
+			await sleep(1000)
+			const { data } = await fetchGraphQL(i)
+			const { property_authentication: items } = data
+			const next = [...prev, ...items]
+			return items.length > 0 ? f(i + items.length, next) : next
+		}
+		return f()
+	})()
+	return authinticatedPropertoes
 }

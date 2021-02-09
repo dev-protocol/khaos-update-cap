@@ -26,6 +26,7 @@ export const getTransactionBlockNumber = async (
 export const lockupAbi = [
 	'event Lockedup(address, address, uint256)',
 	'function updateCap(uint256) external',
+	'function cap() external view returns (uint256)',
 ]
 
 const getAddressConfigContract = (
