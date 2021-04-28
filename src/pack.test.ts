@@ -4,7 +4,7 @@ import { pack } from './pack'
 
 test('Returns callback function name', async (t) => {
 	const res = await pack({ results: {} as any })
-	t.is(res!.name, 'updateSet')
+	t.is(res!.name, 'updateCap')
 })
 
 test('Returns arguments', async (t) => {
