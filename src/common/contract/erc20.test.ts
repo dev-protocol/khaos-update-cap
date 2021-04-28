@@ -1,7 +1,5 @@
 import test from 'ava'
-import {
-	getErc20Instance,
-} from './erc20'
+import { getErc20Instance } from './erc20'
 
 const DUMMY_ERC20_ADDRESS = '0xF9A78B4fE89C11493dCcC66d95b1f071191149D5'
 

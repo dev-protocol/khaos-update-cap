@@ -4,13 +4,13 @@
 import test from 'ava'
 import { ethers } from 'ethers'
 import sinon from 'sinon'
-import {
-	lockupAbi,
-	getLockupInstance,
-} from './lockup'
+import { lockupAbi, getLockupInstance } from './lockup'
 import * as addressConfigModules from './addressConfig'
 
-let getAddressConfigInstance: sinon.SinonStub<[provider: ethers.providers.BaseProvider], ethers.Contract>
+let getAddressConfigInstance: sinon.SinonStub<
+	[provider: ethers.providers.BaseProvider],
+	ethers.Contract
+>
 
 const DUMMY_LOCKUP_ADDRESS = '0xF9A78B4fE89C11493dCcC66d95b1f071191149D5'
 
@@ -19,8 +19,13 @@ const lockupFunc = async (): Promise<string> => {
 }
 
 test.before(() => {
-	getAddressConfigInstance = sinon.stub(addressConfigModules, 'getAddressConfigInstance')
-	getAddressConfigInstance.withArgs(null as any).returns({ lockup: lockupFunc } as any)
+	getAddressConfigInstance = sinon.stub(
+		addressConfigModules,
+		'getAddressConfigInstance'
+	)
+	getAddressConfigInstance
+		.withArgs(null as any)
+		.returns({ lockup: lockupFunc } as any)
 })
 
 // lockupAbi

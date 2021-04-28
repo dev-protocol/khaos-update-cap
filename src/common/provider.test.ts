@@ -1,9 +1,7 @@
 /* eslint-disable functional/immutable-data */
 import test from 'ava'
 import { ethers } from 'ethers'
-import {
-	getProvider,
-} from './provider'
+import { getProvider } from './provider'
 
 // getProvider
 test('get the provider of the mainnet.', async (t) => {

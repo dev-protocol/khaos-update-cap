@@ -7,16 +7,26 @@ import { addresses } from './addresses'
 import * as providerModules from './common/provider'
 import * as contractModules from './common/contract'
 
-let getProvider: sinon.SinonStub<[network: string], ethers.providers.BaseProvider>
-let getLockupInstance: sinon.SinonStub<[provider: ethers.providers.BaseProvider], Promise<ethers.Contract>>
+let getProvider: sinon.SinonStub<
+	[network: string],
+	ethers.providers.BaseProvider
+>
+let getLockupInstance: sinon.SinonStub<
+	[provider: ethers.providers.BaseProvider],
+	Promise<ethers.Contract>
+>
 
 test.before(() => {
 	getProvider = sinon.stub(providerModules, 'getProvider')
 	getProvider.withArgs('mainnet').returns('mainnet' as any)
 	getProvider.withArgs('ropsten').returns('ropsten' as any)
 	getLockupInstance = sinon.stub(contractModules, 'getLockupInstance')
-	getLockupInstance.withArgs('mainnet' as any).resolves({ address: 'mainnet-address' } as any)
-	getLockupInstance.withArgs('ropsten' as any).resolves({ address: 'ropsten-address' } as any)
+	getLockupInstance
+		.withArgs('mainnet' as any)
+		.resolves({ address: 'mainnet-address' } as any)
+	getLockupInstance
+		.withArgs('ropsten' as any)
+		.resolves({ address: 'ropsten-address' } as any)
 })
 
 test('Returns mainnet lockup address', async (t) => {

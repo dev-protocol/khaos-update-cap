@@ -1,6 +1,6 @@
 export const getAuthinticatedPropertyList = (
 	authinticatedPropertoes: readonly {
-		readonly property: string;
+		readonly property: string
 	}[]
 ): readonly string[] => {
 	const properties = authinticatedPropertoes.map((data) => {
@@ -11,8 +11,8 @@ export const getAuthinticatedPropertyList = (
 
 export const getLockupValuesMap = (
 	lockupSumValues: readonly {
-		readonly property_address: string;
-		readonly sum_values: string;
+		readonly property_address: string
+		readonly sum_values: string
 	}[]
 ): ReadonlyMap<string, string> => {
 	const values = lockupSumValues.map<readonly [string, string]>(

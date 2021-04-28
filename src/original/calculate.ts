@@ -1,7 +1,10 @@
 import { BigNumber } from 'ethers'
 import { pow, bignumber, divide } from 'mathjs'
 
-export const calculateGeometricMean = (valueMap: ReadonlyMap<string, string>, authinticatedProperties: readonly string[]): BigNumber => {
+export const calculateGeometricMean = (
+	valueMap: ReadonlyMap<string, string>,
+	authinticatedProperties: readonly string[]
+): BigNumber => {
 	const values = authinticatedProperties.map((property) => {
 		const value = valueMap.get(property)
 		const tmp = typeof value === 'undefined' ? '1000000000000000000' : value
@@ -18,7 +21,10 @@ export const calculateGeometricMean = (valueMap: ReadonlyMap<string, string>, au
 	return BigNumber.from(bignumber(calculationResults.toString()).toFixed(0))
 }
 
-export const calculateArithmeticMean = (valueMap: ReadonlyMap<string, string>, authinticatedProperties: readonly string[]): BigNumber => {
+export const calculateArithmeticMean = (
+	valueMap: ReadonlyMap<string, string>,
+	authinticatedProperties: readonly string[]
+): BigNumber => {
 	const values = authinticatedProperties.map((property) => {
 		const value = valueMap.get(property)
 		const tmp = typeof value === 'undefined' ? '0' : value

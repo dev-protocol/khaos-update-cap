@@ -1,7 +1,5 @@
 import test from 'ava'
-import {
-	getAddressConfigInstance,
-} from './addressConfig'
+import { getAddressConfigInstance } from './addressConfig'
 
 // getAddressConfigInstance
 test('get the AddressConfig contract object.', async (t) => {
