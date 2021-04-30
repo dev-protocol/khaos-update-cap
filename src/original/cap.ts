@@ -29,6 +29,3 @@ export const getCap = async (
 	const tmp = BigNumber.from(1).sub(wEthBalance.div(devBalance))
 	return devBalance.mul(tmp).mul(12).mul(geometricMean).div(arithmeticMean)
 }
-
-// TODOいらなくなった関数の削除
-// 増えた関数のテスト
