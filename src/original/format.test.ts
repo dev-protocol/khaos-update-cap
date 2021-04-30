@@ -4,13 +4,13 @@ import { getLockupValuesMap, getAuthinticatedPropertyList } from './format'
 test('get property property', async (t) => {
 	const res = await getAuthinticatedPropertyList([
 		{
-			property: '0xhogehoge'
+			property: '0xhogehoge',
 		},
 		{
-			property: '0xhugahuga'
+			property: '0xhugahuga',
 		},
 		{
-			property: '0xabaaba'
+			property: '0xabaaba',
 		},
 	])
 	t.is(res.length, 3)
@@ -28,15 +28,15 @@ test('get property map', async (t) => {
 	const res = await getLockupValuesMap([
 		{
 			property_address: '0xhogehoge',
-			sum_values: '100'
+			sum_values: '100',
 		},
 		{
 			property_address: '0xhugahuga',
-			sum_values: '200'
+			sum_values: '200',
 		},
 		{
 			property_address: '0xabaaba',
-			sum_values: '50'
+			sum_values: '50',
 		},
 	])
 	t.is(res.size, 3)

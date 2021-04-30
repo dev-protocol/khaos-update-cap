@@ -10,10 +10,14 @@ export const calculateGeometricMean = (
 		const tmp = typeof value === 'undefined' ? '1000000000000000000' : value
 		return BigNumber.from(tmp)
 	})
-	return values.length === 0 ? BigNumber.from(0) : innerCalculateGeometricMean(values)
+	return values.length === 0
+		? BigNumber.from(0)
+		: innerCalculateGeometricMean(values)
 }
 
-const innerCalculateGeometricMean = (values: readonly BigNumber[]): BigNumber => {
+const innerCalculateGeometricMean = (
+	values: readonly BigNumber[]
+): BigNumber => {
 	const result = values.reduce((data1, data2) => {
 		return data1.mul(data2)
 	})
@@ -35,11 +39,16 @@ export const calculateArithmeticMean = (
 		return BigNumber.from(tmp)
 	})
 
-	const result = values.length === 0 ? BigNumber.from(0) : innerCalculateArithmeticMean(values)
+	const result =
+		values.length === 0
+			? BigNumber.from(0)
+			: innerCalculateArithmeticMean(values)
 	return result
 }
 
-const innerCalculateArithmeticMean = (values: readonly BigNumber[]): BigNumber => {
+const innerCalculateArithmeticMean = (
+	values: readonly BigNumber[]
+): BigNumber => {
 	const result = values.reduce((data1, data2) => {
 		return data1.add(data2)
 	})

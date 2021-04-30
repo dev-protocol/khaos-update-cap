@@ -1,4 +1,9 @@
-import { getErc20Instance, getAddressConfigInstance, getLockupInstance, lockupAbi } from './contract'
+import {
+	getErc20Instance,
+	getAddressConfigInstance,
+	getLockupInstance,
+	lockupAbi,
+} from './contract'
 import { getProvider } from './provider'
 
 export {
@@ -6,5 +11,5 @@ export {
 	getErc20Instance,
 	getAddressConfigInstance,
 	getLockupInstance,
-	lockupAbi
+	lockupAbi,
 }

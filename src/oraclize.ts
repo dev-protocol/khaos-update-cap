@@ -9,10 +9,10 @@ export const oraclize: FunctionOraclizer = async ({ query, network }) => {
 	const isUpdate = await isUpdateCap(provider, cap, query.transactionhash)
 	const result = isUpdate
 		? {
-			message: cap.toString(),
-			status: 0,
-			statusMessage: `${network} ${query.publicSignature}`,
-		}
+				message: cap.toString(),
+				status: 0,
+				statusMessage: `${network} ${query.publicSignature}`,
+		  }
 		: undefined
 	return result
 }
