@@ -2,7 +2,8 @@
 /* eslint-disable functional/prefer-readonly-type */
 import test from 'ava'
 import sinon from 'sinon'
-import { providers, BigNumber } from 'ethers'
+import { providers } from 'ethers'
+import { bignumber, BigNumber } from 'mathjs'
 import { getCap } from './cap'
 import * as balanceModules from './balance'
 import * as graphqlModules from './graphql'
@@ -36,7 +37,7 @@ test.before(() => {
 	)
 	getDevBalanceOfLiquidityPool
 		.withArgs(null as any)
-		.resolves(BigNumber.from('20000000000000000000000'))
+		.resolves(bignumber('20000000000000000000000'))
 
 	getWEthBalanceOfLiquidityPool = sinon.stub(
 		balanceModules,
@@ -44,7 +45,7 @@ test.before(() => {
 	)
 	getWEthBalanceOfLiquidityPool
 		.withArgs(null as any)
-		.resolves(BigNumber.from('100000000000000000000'))
+		.resolves(bignumber('100000000000000000000'))
 
 	getAuthinticatedProperty = sinon.stub(
 		graphqlModules,
@@ -70,7 +71,10 @@ test.before(() => {
 
 test('get withdraw cap', async (t) => {
 	const res = await getCap(null as any)
-	t.is(res.toString(), '7188863637476046318340')
+	t.is(
+		res.toFixed(),
+		'7152919319288666086753.21108429127155937377694420110723946810172'
+	)
 })
 
 test.after(() => {
