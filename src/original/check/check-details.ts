@@ -1,22 +1,6 @@
 import { ethers, providers, BigNumber } from 'ethers'
-import { getLockupInstance } from '../common/contract'
 
-export const isUpdateCap = async (
-	provider: providers.BaseProvider,
-	nextCap: BigNumber,
-	transactionHash: string
-): Promise<boolean> => {
-	const lockupContract = await getLockupInstance(provider)
-	const isSame = await isSameVal(lockupContract, nextCap)
-	const isLastEvent = await isLatestLockedupEvent(
-		provider,
-		lockupContract,
-		transactionHash
-	)
-	return isSame === false && isLastEvent
-}
-
-const isSameVal = async (
+export const isSameVal = async (
 	lockup: ethers.Contract,
 	nextCap: BigNumber
 ): Promise<boolean> => {
@@ -24,7 +8,7 @@ const isSameVal = async (
 	return BigNumber.from(cap).eq(nextCap)
 }
 
-const isLatestLockedupEvent = async (
+export const isLatestLockedupEvent = async (
 	provider: providers.BaseProvider,
 	lockup: ethers.Contract,
 	transactionHash: string

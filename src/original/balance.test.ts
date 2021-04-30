@@ -4,7 +4,7 @@
 import test from 'ava'
 import sinon from 'sinon'
 import { providers, BigNumber, Contract } from 'ethers'
-import * as contractModules from '../common/contract'
+import * as contractModules from '../common'
 import {
 	getWEthBalanceOfLiquidityPool,
 	getDevBalanceOfLiquidityPool,

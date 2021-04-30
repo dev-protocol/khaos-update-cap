@@ -4,8 +4,8 @@ import test from 'ava'
 import sinon from 'sinon'
 import { ethers } from 'ethers'
 import { addresses } from './addresses'
-import * as providerModules from './common/provider'
-import * as contractModules from './common/contract'
+import * as providerModules from './common'
+import * as contractModules from './common'
 
 let getProvider: sinon.SinonStub<
 	[network: string],

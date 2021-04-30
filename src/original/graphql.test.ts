@@ -5,8 +5,7 @@ import BigNumber from 'bignumber.js'
 import { getLockupSumValues, getAuthinticatedProperty } from './graphql'
 
 test('get the data for lockup sum values.', async (t) => {
-	process.env[`KHAOS_MAINNET_GRAPHQL`] = 'https://api.devprtcl.com/v1/graphql'
-	const lockupSumValues = await getLockupSumValues('mainnet')
+	const lockupSumValues = await getLockupSumValues('v1')
 	t.is(lockupSumValues.length > 0, true)
 	lockupSumValues.map((data) => {
 		t.is(ethers.utils.isAddress(data.property_address), true)
@@ -16,8 +15,7 @@ test('get the data for lockup sum values.', async (t) => {
 })
 
 test('Property_authintication data can be retrieved.', async (t) => {
-	process.env[`KHAOS_MAINNET_GRAPHQL`] = 'https://api.devprtcl.com/v1/graphql'
-	const lockupSumValues = await getAuthinticatedProperty('mainnet')
+	const lockupSumValues = await getAuthinticatedProperty('v1')
 	t.is(lockupSumValues.length > 0, true)
 	lockupSumValues.map((data) => {
 		t.is(ethers.utils.isAddress(data.property), true)

@@ -1,7 +1,7 @@
 import { FunctionOraclizer } from '@devprotocol/khaos-core'
-import { getProvider } from './common/provider'
-import { isUpdateCap } from './original/check'
-import { getCap } from './original/cap'
+import { getProvider } from './common'
+import { isUpdateCap } from './original'
+import { getCap } from './original'
 
 export const oraclize: FunctionOraclizer = async ({ query, network }) => {
 	const provider = getProvider(network)
@@ -9,10 +9,10 @@ export const oraclize: FunctionOraclizer = async ({ query, network }) => {
 	const isUpdate = await isUpdateCap(provider, cap, query.transactionhash)
 	const result = isUpdate
 		? {
-				message: cap.toString(),
-				status: 0,
-				statusMessage: `${network} ${query.publicSignature}`,
-		  }
+			message: cap.toString(),
+			status: 0,
+			statusMessage: `${network} ${query.publicSignature}`,
+		}
 		: undefined
 	return result
 }

@@ -5,9 +5,9 @@ import test from 'ava'
 import { BigNumber } from 'ethers'
 import sinon from 'sinon'
 import { oraclize } from './oraclize'
-import * as providerModules from './common/provider'
-import * as capModules from './original/cap'
-import * as checkModules from './original/check'
+import * as providerModules from './common'
+import * as capModules from './original'
+import * as checkModules from './original'
 import { BaseProvider } from '@ethersproject/providers'
 
 let getProvider: sinon.SinonStub<[network: string], BaseProvider>
