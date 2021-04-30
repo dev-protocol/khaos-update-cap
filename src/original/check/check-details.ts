@@ -4,7 +4,7 @@ export const isSameVal = async (
 	lockup: ethers.Contract,
 	nextCap: BigNumber
 ): Promise<boolean> => {
-	const cap = await lockup.cap()
+	const cap: BigNumber = await lockup.cap()
 	return BigNumber.from(cap).eq(nextCap)
 }
 
