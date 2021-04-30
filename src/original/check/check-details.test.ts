@@ -3,7 +3,6 @@ import test from 'ava'
 import { BigNumber } from 'ethers'
 import { isSameVal, isLatestLockedupEvent } from './check-details'
 
-
 test('If the values are the same, true will be returned.', async (t) => {
 	const capFunc = async (): Promise<BigNumber> => {
 		return BigNumber.from(100)
@@ -27,16 +26,20 @@ test('If the retrieved event is 0, true will return.', async (t) => {
 	const LockedupFunc = (): any => {
 		return {}
 	}
-	const queryFilterFunc = async (arg1: any, blockNumber: any, flg: string): Promise<readonly []> => {
+	const queryFilterFunc = async (
+		arg1: any,
+		blockNumber: any,
+		flg: string
+	): Promise<readonly []> => {
 		return []
 	}
 	const res = await isLatestLockedupEvent(
 		{ getTransaction: getTransactionFunc } as any,
 		{
 			filters: {
-				Lockedup: LockedupFunc
+				Lockedup: LockedupFunc,
 			},
-			queryFilter: queryFilterFunc
+			queryFilter: queryFilterFunc,
 		} as any,
 		'dummy-hash'
 	)
@@ -50,16 +53,20 @@ test('If the retrieved event is not zero, false will return.', async (t) => {
 	const LockedupFunc = (): any => {
 		return {}
 	}
-	const queryFilterFunc = async (arg1: any, blockNumber: any, flg: string): Promise<readonly [any]> => {
+	const queryFilterFunc = async (
+		arg1: any,
+		blockNumber: any,
+		flg: string
+	): Promise<readonly [any]> => {
 		return ['dummy']
 	}
 	const res = await isLatestLockedupEvent(
 		{ getTransaction: getTransactionFunc } as any,
 		{
 			filters: {
-				Lockedup: LockedupFunc
+				Lockedup: LockedupFunc,
 			},
-			queryFilter: queryFilterFunc
+			queryFilter: queryFilterFunc,
 		} as any,
 		'dummy-hash'
 	)
