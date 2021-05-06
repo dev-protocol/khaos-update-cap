@@ -50,13 +50,13 @@ test.before(() => {
 // getDevBalanceOfLiquidityPool
 test('get dev balance.', async (t) => {
 	const balance = await getDevBalanceOfLiquidityPool(null as any)
-	t.true(balance.eq(BigNumber.from(100)))
+	t.true(balance.eq(100))
 })
 
 // getWEthBalanceOfLiquidityPool
 test('get weth balance.', async (t) => {
 	const balance = await getWEthBalanceOfLiquidityPool(null as any)
-	t.true(balance.eq(BigNumber.from(100)))
+	t.true(balance.eq(100))
 })
 
 test.after(() => {

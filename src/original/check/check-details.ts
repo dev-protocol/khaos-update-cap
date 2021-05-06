@@ -1,11 +1,12 @@
-import { ethers, providers, BigNumber } from 'ethers'
+import { ethers, providers } from 'ethers'
+import { bignumber, BigNumber } from 'mathjs'
 
 export const isSameVal = async (
 	lockup: ethers.Contract,
 	nextCap: BigNumber
 ): Promise<boolean> => {
 	const cap: BigNumber = await lockup.cap()
-	return BigNumber.from(cap).eq(nextCap)
+	return bignumber(cap).eq(nextCap)
 }
 
 export const isLatestLockedupEvent = async (

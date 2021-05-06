@@ -7,9 +7,10 @@ export const oraclize: FunctionOraclizer = async ({ query, network }) => {
 	const provider = getProvider(network)
 	const cap = await getCap(provider)
 	const isUpdate = await isUpdateCap(provider, cap, query.transactionhash)
+	const [message] = cap.toFixed().split('.') // Forcibly truncates the decimal point regardless of the BigNumber specifications.
 	const result = isUpdate
 		? {
-				message: cap.toString(),
+				message,
 				status: 0,
 				statusMessage: `${network} ${query.publicSignature}`,
 		  }

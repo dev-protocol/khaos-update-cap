@@ -12,7 +12,10 @@ test('calculate geometric mean', async (t) => {
 		'0xhugahuga',
 		'0xkayokayo',
 	])
-	t.is(res.toString(), '18171205928321303453986')
+	t.is(
+		res.toFixed(),
+		'18171205928321396588912.11756327260502428210463141219671481334289'
+	)
 })
 
 test('calculate geometric mean(If not staked, convert to 1000000000000000000)', async (t) => {
@@ -28,7 +31,10 @@ test('calculate geometric mean(If not staked, convert to 1000000000000000000)', 
 		'0xqwerqwer',
 		'0xpowefwev',
 	])
-	t.is(res.toString(), '359443181873802315917')
+	t.is(
+		res.toFixed(),
+		'359443181873802315917.2467881553402793655164293568395597722664181'
+	)
 })
 
 test('if there is no value, result is 0(calculateGeometricMean)', async (t) => {

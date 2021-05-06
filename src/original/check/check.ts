@@ -1,4 +1,5 @@
-import { providers, BigNumber } from 'ethers'
+import { providers } from 'ethers'
+import { BigNumber } from 'mathjs'
 import { getLockupInstance } from '../../common'
 import { isSameVal, isLatestLockedupEvent } from './check-details'
 

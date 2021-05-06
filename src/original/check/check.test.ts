@@ -2,7 +2,8 @@
 /* eslint-disable functional/prefer-readonly-type */
 
 import test from 'ava'
-import { BigNumber, Contract } from 'ethers'
+import { Contract } from 'ethers'
+import { bignumber, BigNumber } from 'mathjs'
 import sinon from 'sinon'
 import { isUpdateCap } from './check'
 import * as checkDetailsModules from './check-details'
@@ -33,38 +34,38 @@ test.before(() => {
 })
 
 test('If it is the last event and the current value is the same.', async (t) => {
-	isSameVal.withArgs(null as any, BigNumber.from(100)).resolves(true)
+	isSameVal.withArgs(null as any, bignumber(100)).resolves(true)
 	isLatestLockedupEvent
 		.withArgs(null as any, null as any, 'dummy-hash')
 		.resolves(true)
-	const res = await isUpdateCap(null as any, BigNumber.from(100), 'dummy-hash')
+	const res = await isUpdateCap(null as any, bignumber(100), 'dummy-hash')
 	t.false(res)
 })
 
 test('If it is not the last event and the current value is the same.', async (t) => {
-	isSameVal.withArgs(null as any, BigNumber.from(300)).resolves(true)
+	isSameVal.withArgs(null as any, bignumber(300)).resolves(true)
 	isLatestLockedupEvent
 		.withArgs(null as any, null as any, 'dummy-hash2')
 		.resolves(false)
-	const res = await isUpdateCap(null as any, BigNumber.from(300), 'dummy-hash2')
+	const res = await isUpdateCap(null as any, bignumber(300), 'dummy-hash2')
 	t.false(res)
 })
 
 test('If it is the last event and the current value is different', async (t) => {
-	isSameVal.withArgs(null as any, BigNumber.from(200)).resolves(false)
+	isSameVal.withArgs(null as any, bignumber(200)).resolves(false)
 	isLatestLockedupEvent
 		.withArgs(null as any, null as any, 'dummy-hash3')
 		.resolves(true)
-	const res = await isUpdateCap(null as any, BigNumber.from(200), 'dummy-hash3')
+	const res = await isUpdateCap(null as any, bignumber(200), 'dummy-hash3')
 	t.true(res)
 })
 
 test('If it is not the last event and the current value is different', async (t) => {
-	isSameVal.withArgs(null as any, BigNumber.from(400)).resolves(false)
+	isSameVal.withArgs(null as any, bignumber(400)).resolves(false)
 	isLatestLockedupEvent
 		.withArgs(null as any, null as any, 'dummy-hash4')
 		.resolves(false)
-	const res = await isUpdateCap(null as any, BigNumber.from(400), 'dummy-hash4')
+	const res = await isUpdateCap(null as any, bignumber(400), 'dummy-hash4')
 	t.false(res)
 })
 
