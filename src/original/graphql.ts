@@ -53,10 +53,6 @@ type GraphQLPropertyAuthenticationPropertyResponse = {
 	}
 }
 
-function sleep(milliseconds: number): Promise<void> {
-	return new Promise((resolve) => setTimeout(resolve, milliseconds))
-}
-
 export const getLockupSumValues = async (
 	version: string
 ): Promise<
@@ -72,8 +68,6 @@ export const getLockupSumValues = async (
 		GraphQLPropertyLockupSumValuesResponse['data']['property_lockup_sum_values']
 	const lockupSumValues = await (async () => {
 		const f = async (i = 0, prev: R = []): Promise<R> => {
-			// eslint-disable-next-line functional/no-expression-statement
-			await sleep(1000)
 			const { data } = await fetchGraphQL(i)
 			const { property_lockup_sum_values: items } = data
 			const next = [...prev, ...items]
@@ -98,8 +92,6 @@ export const getAuthinticatedProperty = async (
 		GraphQLPropertyAuthenticationPropertyResponse['data']['property_authentication']
 	const authinticatedPropertoes = await (async () => {
 		const f = async (i = 0, prev: R = []): Promise<R> => {
-			// eslint-disable-next-line functional/no-expression-statement
-			await sleep(1000)
 			const { data } = await fetchGraphQL(i)
 			const { property_authentication: items } = data
 			const next = [...prev, ...items]
