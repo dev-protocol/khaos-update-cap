@@ -2,7 +2,7 @@
 /* eslint-disable functional/prefer-readonly-type */
 /* eslint-disable @typescript-eslint/no-non-null-assertion */
 import test from 'ava'
-import { BigNumber } from 'ethers'
+import { bignumber, BigNumber } from 'mathjs'
 import sinon from 'sinon'
 import { oraclize } from './oraclize'
 import * as providerModules from './common'
@@ -17,24 +17,29 @@ let isUpdateCap: sinon.SinonStub<
 	Promise<boolean>
 >
 
+const dummyNumber =
+	'3175573141986827732.939958658618868394957633106846215492361'
+
 test.before(() => {
 	getProvider = sinon.stub(providerModules, 'getProvider')
 	getProvider.withArgs('mainnet').returns({ network: 'mainnet' } as any)
 
 	getCap = sinon.stub(capModules, 'getCap')
-	getCap.withArgs({ network: 'mainnet' } as any).resolves(BigNumber.from(100))
+	getCap
+		.withArgs({ network: 'mainnet' } as any)
+		.resolves(bignumber(dummyNumber))
 	isUpdateCap = sinon.stub(checkModules, 'isUpdateCap')
 	isUpdateCap
 		.withArgs(
 			{ network: 'mainnet' } as any,
-			BigNumber.from(100),
+			bignumber(dummyNumber),
 			'dummy-transaction'
 		)
 		.resolves(true)
 	isUpdateCap
 		.withArgs(
 			{ network: 'mainnet' } as any,
-			BigNumber.from(100),
+			bignumber(dummyNumber),
 			'dummy-transaction2'
 		)
 		.resolves(false)
@@ -50,7 +55,7 @@ test('Returns oraclize data', async (t) => {
 		network: 'mainnet',
 		signatureOptions: null as any,
 	})
-	t.is(res!.message, '100')
+	t.is(res!.message, '3175573141986827732')
 	t.is(res!.status, 0)
 	t.is(res!.statusMessage, 'mainnet dummy-sig')
 })

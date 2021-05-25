@@ -1,21 +1,21 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import test from 'ava'
-import { BigNumber } from 'ethers'
 import { isSameVal, isLatestLockedupEvent } from './check-details'
+import { bignumber, BigNumber } from 'mathjs'
 
 test('If the values are the same, true will be returned.', async (t) => {
 	const capFunc = async (): Promise<BigNumber> => {
-		return BigNumber.from(100)
+		return bignumber(100)
 	}
-	const res = await isSameVal({ cap: capFunc } as any, BigNumber.from(100))
+	const res = await isSameVal({ cap: capFunc } as any, bignumber(100))
 	t.true(res)
 })
 
 test('If the value is different, false will be returned.', async (t) => {
 	const capFunc = async (): Promise<BigNumber> => {
-		return BigNumber.from(200)
+		return bignumber(200)
 	}
-	const res = await isSameVal({ cap: capFunc } as any, BigNumber.from(100))
+	const res = await isSameVal({ cap: capFunc } as any, bignumber(100))
 	t.false(res)
 })
 

@@ -1,4 +1,4 @@
-import { providers, BigNumber } from 'ethers'
+import { providers } from 'ethers'
 import {
 	getDevBalanceOfLiquidityPool,
 	getWEthBalanceOfLiquidityPool,
@@ -6,6 +6,7 @@ import {
 import { getLockupSumValues, getAuthinticatedProperty } from './graphql'
 import { getAuthinticatedPropertyList, getLockupValuesMap } from './format'
 import { calculateGeometricMean, calculateArithmeticMean } from './calculate'
+import { bignumber, BigNumber } from 'mathjs'
 
 export const getCap = async (
 	provider: providers.BaseProvider
@@ -26,6 +27,10 @@ export const getCap = async (
 		lockupValuesMap,
 		authinticatedPropertyList
 	)
-	const tmp = BigNumber.from(1).sub(wEthBalance.div(devBalance))
-	return devBalance.mul(tmp).mul(12).mul(geometricMean).div(arithmeticMean)
+	const tmp = bignumber(1).sub(wEthBalance.div(devBalance))
+	return devBalance
+		.times(tmp)
+		.times(12)
+		.times(geometricMean)
+		.div(arithmeticMean)
 }

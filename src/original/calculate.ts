@@ -1,5 +1,4 @@
-import { BigNumber } from 'ethers'
-import { pow, bignumber, divide } from 'mathjs'
+import { pow, bignumber, BigNumber } from 'mathjs'
 
 export const calculateGeometricMean = (
 	valueMap: ReadonlyMap<string, string>,
@@ -8,10 +7,10 @@ export const calculateGeometricMean = (
 	const values = authinticatedProperties.map((property) => {
 		const value = valueMap.get(property)
 		const tmp = typeof value === 'undefined' ? '1000000000000000000' : value
-		return BigNumber.from(tmp)
+		return bignumber(tmp)
 	})
 	return values.length === 0
-		? BigNumber.from(0)
+		? bignumber(0)
 		: innerCalculateGeometricMean(values)
 }
 
@@ -21,12 +20,9 @@ const innerCalculateGeometricMean = (
 	const result = values.reduce((data1, data2) => {
 		return data1.mul(data2)
 	})
-	const tmp = divide(1, values.length)
-	const calculationResults = pow(
-		bignumber(result.toString()),
-		bignumber(tmp.toString())
-	)
-	return BigNumber.from(bignumber(calculationResults.toString()).toFixed(0))
+	const tmp = bignumber(1).div(values.length)
+	const calculationResults = pow(result, tmp)
+	return bignumber(calculationResults.toString())
 }
 
 export const calculateArithmeticMean = (
@@ -36,13 +32,11 @@ export const calculateArithmeticMean = (
 	const values = authinticatedProperties.map((property) => {
 		const value = valueMap.get(property)
 		const tmp = typeof value === 'undefined' ? '0' : value
-		return BigNumber.from(tmp)
+		return bignumber(tmp)
 	})
 
 	const result =
-		values.length === 0
-			? BigNumber.from(0)
-			: innerCalculateArithmeticMean(values)
+		values.length === 0 ? bignumber(0) : innerCalculateArithmeticMean(values)
 	return result
 }
 
