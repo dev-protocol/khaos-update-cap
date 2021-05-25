@@ -18,7 +18,7 @@ let isUpdateCap: sinon.SinonStub<
 >
 
 const dummyNumber =
-	'3175573141986827732.939958658618868394957633106846215492361'
+	'3175573141986827732.839958658618868394957633106846215492361'
 
 test.before(() => {
 	getProvider = sinon.stub(providerModules, 'getProvider')
