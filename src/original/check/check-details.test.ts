@@ -7,7 +7,7 @@ test('If the values are the same, true will be returned.', async (t) => {
 	const capFunc = async (): Promise<BigNumber> => {
 		return bignumber(100)
 	}
-	const res = await isSameVal({ cap: capFunc } as any, bignumber(100))
+	const res = await isSameVal({ cap: capFunc } as any, bignumber('100'))
 	t.true(res)
 })
 

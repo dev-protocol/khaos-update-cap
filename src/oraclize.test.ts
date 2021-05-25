@@ -32,14 +32,14 @@ test.before(() => {
 	isUpdateCap
 		.withArgs(
 			{ network: 'mainnet' } as any,
-			bignumber(dummyNumber),
+			bignumber(dummyNumber.split('.')[0]),
 			'dummy-transaction'
 		)
 		.resolves(true)
 	isUpdateCap
 		.withArgs(
 			{ network: 'mainnet' } as any,
-			bignumber(dummyNumber),
+			bignumber(dummyNumber.split('.')[0]),
 			'dummy-transaction2'
 		)
 		.resolves(false)
