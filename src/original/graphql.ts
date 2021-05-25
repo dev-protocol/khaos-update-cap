@@ -2,9 +2,9 @@ import bent from 'bent'
 
 const createGraphQLPropertyLockupSumValuesFetcher =
 	(fetcher: bent.RequestFunction<bent.ValidResponse>) =>
-	async (offset = 0): Promise<GraphQLPropertyLockupSumValuesResponse> =>
-		fetcher('/', {
-			query: `{
+		async (offset = 0): Promise<GraphQLPropertyLockupSumValuesResponse> =>
+			fetcher('/', {
+				query: `{
 				property_lockup_sum_values(
 					offset: ${offset},
 					order_by: {property_address: asc}
@@ -13,14 +13,14 @@ const createGraphQLPropertyLockupSumValuesFetcher =
 					sum_values
 				}
 			}`,
-		}).then((r) => r as unknown as GraphQLPropertyLockupSumValuesResponse)
+			}).then((r) => r as unknown as GraphQLPropertyLockupSumValuesResponse)
 
 // TODO 結局Marketだけにするか、どうするか確認
 const createGraphQLPropertyAuthenticationFetcher =
 	(fetcher: bent.RequestFunction<bent.ValidResponse>) =>
-	async (offset = 0): Promise<GraphQLPropertyAuthenticationPropertyResponse> =>
-		fetcher('/', {
-			query: `{
+		async (offset = 0): Promise<GraphQLPropertyAuthenticationPropertyResponse> =>
+			fetcher('/', {
+				query: `{
 				property_authentication(
 					where: {market: {_in: ["0x67d31300953Cd9aB2beE6e541A121cF93640af20", "0x34A7AdC94C4D41C3e3469F98033B372cB2fAf318"]}},
 					offset: ${offset},
@@ -29,12 +29,12 @@ const createGraphQLPropertyAuthenticationFetcher =
 					property
 				}
 			}`,
-		}).then(
-			(r) => r as unknown as GraphQLPropertyAuthenticationPropertyResponse
-		)
+			}).then(
+				(r) => r as unknown as GraphQLPropertyAuthenticationPropertyResponse
+			)
 
 const graphql = (version: string): bent.RequestFunction<bent.ValidResponse> => {
-	return bent(`https://api.devprtcl.com/${version}/graphql`, 'POST', 'json')
+	return bent(`https://api.devprotocol.xyz/${version}/graphql`, 'POST', 'json')
 }
 
 type GraphQLPropertyLockupSumValuesResponse = {
