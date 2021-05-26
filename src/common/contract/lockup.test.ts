@@ -7,7 +7,10 @@ import sinon from 'sinon'
 import { lockupAbi, getLockupInstance } from './lockup'
 import * as addressConfigModules from './addressConfig'
 
-let getAddressConfigInstance: sinon.SinonStub<[provider: ethers.providers.BaseProvider], Promise<ethers.Contract>>
+let getAddressConfigInstance: sinon.SinonStub<
+	[provider: ethers.providers.BaseProvider],
+	Promise<ethers.Contract>
+>
 
 const DUMMY_LOCKUP_ADDRESS = '0xF9A78B4fE89C11493dCcC66d95b1f071191149D5'
 

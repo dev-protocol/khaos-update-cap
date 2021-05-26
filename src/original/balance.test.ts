@@ -10,7 +10,10 @@ import {
 	getDevBalanceOfLiquidityPool,
 } from './balance'
 
-let getAddressConfigInstance: sinon.SinonStub<[provider: providers.BaseProvider], Promise<Contract>>
+let getAddressConfigInstance: sinon.SinonStub<
+	[provider: providers.BaseProvider],
+	Promise<Contract>
+>
 let getErc20Instance: sinon.SinonStub<
 	[address: string, provider: providers.BaseProvider],
 	Contract

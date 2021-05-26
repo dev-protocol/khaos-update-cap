@@ -5,7 +5,7 @@ import { getAddressConfigInstance } from './addressConfig'
 test('get the AddressConfig contract object.(mainnet)', async (t) => {
 	const dummyDetectNetwork = async (): Promise<any> => {
 		return {
-			chainId: 1
+			chainId: 1,
 		}
 	}
 	const addressConfig = await getAddressConfigInstance({
@@ -18,7 +18,7 @@ test('get the AddressConfig contract object.(mainnet)', async (t) => {
 test('get the AddressConfig contract object.(ropsten)', async (t) => {
 	const dummyDetectNetwork = async (): Promise<any> => {
 		return {
-			chainId: 3
+			chainId: 3,
 		}
 	}
 	const addressConfig = await getAddressConfigInstance({
