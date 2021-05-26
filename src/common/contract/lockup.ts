@@ -4,7 +4,7 @@ import { getAddressConfigInstance } from './addressConfig'
 export const getLockupInstance = async (
 	provider: providers.BaseProvider
 ): Promise<ethers.Contract> => {
-	const addressConfigInstance = getAddressConfigInstance(provider)
+	const addressConfigInstance = await getAddressConfigInstance(provider)
 	const lockupAddress = await addressConfigInstance.lockup()
 	const lockupContract = new ethers.Contract(lockupAddress, lockupAbi, provider)
 	return lockupContract

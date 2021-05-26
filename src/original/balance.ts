@@ -8,7 +8,7 @@ const WETH = '0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2'
 export const getDevBalanceOfLiquidityPool = async (
 	provider: providers.BaseProvider
 ): Promise<MathBigNumber> => {
-	const addressConfigInstance = getAddressConfigInstance(provider)
+	const addressConfigInstance = await getAddressConfigInstance(provider)
 	const devTokenAddress: string = await addressConfigInstance.token()
 	const devInstance = getErc20Instance(devTokenAddress, provider)
 	const balance: BigNumber = await devInstance.balanceOf(UNISWAP_LP)
