@@ -9,10 +9,9 @@ export const getAddressConfigInstance = (
 		'function token() external view returns (address)',
 	]
 	// https://eips.ethereum.org/EIPS/eip-155
-	const address = provider.network.chainId === 1 ? addresses.eth.main.registry : addresses.eth.ropsten.registry
-	return new ethers.Contract(
-		address,
-		abi,
-		provider
-	)
+	const address =
+		provider.network.chainId === 1
+			? addresses.eth.main.registry
+			: addresses.eth.ropsten.registry
+	return new ethers.Contract(address, abi, provider)
 }
