@@ -17,6 +17,7 @@
 		"prepare": "husky install"
 	},
 	"dependencies": {
+		"@devprotocol/dev-kit": "4.4.1",
 		"@devprotocol/khaos-core": "1.2.3",
 		"@types/bent": "7.3.2",
 		"@types/mathjs": "6.0.12",
@@ -31,6 +32,7 @@
 		"@ava/typescript": "1.1.1",
 		"@rollup/plugin-commonjs": "18.1.0",
 		"@rollup/plugin-node-resolve": "11.2.1",
+		"@rollup/plugin-json": "4.1.0",
 		"@types/node": "14.17.0",
 		"@types/ramda": "0.27.40",
 		"@typescript-eslint/eslint-plugin": "4.25.0",

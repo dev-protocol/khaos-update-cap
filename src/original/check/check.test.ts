@@ -18,6 +18,7 @@ let isLatestLockedupEvent: sinon.SinonStub<
 	[provider: BaseProvider, lockup: Contract, transactionHash: string],
 	Promise<boolean>
 >
+
 let getLockupInstance: sinon.SinonStub<
 	[provider: BaseProvider],
 	Promise<Contract>
