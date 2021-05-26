@@ -12,7 +12,7 @@ import {
 
 let getAddressConfigInstance: sinon.SinonStub<
 	[provider: providers.BaseProvider],
-	Contract
+	Promise<Contract>
 >
 let getErc20Instance: sinon.SinonStub<
 	[address: string, provider: providers.BaseProvider],

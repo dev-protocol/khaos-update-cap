@@ -9,7 +9,7 @@ import * as addressConfigModules from './addressConfig'
 
 let getAddressConfigInstance: sinon.SinonStub<
 	[provider: ethers.providers.BaseProvider],
-	ethers.Contract
+	Promise<ethers.Contract>
 >
 
 const DUMMY_LOCKUP_ADDRESS = '0xF9A78B4fE89C11493dCcC66d95b1f071191149D5'
@@ -25,7 +25,7 @@ test.before(() => {
 	)
 	getAddressConfigInstance
 		.withArgs(null as any)
-		.returns({ lockup: lockupFunc } as any)
+		.resolves({ lockup: lockupFunc } as any)
 })
 
 // lockupAbi
