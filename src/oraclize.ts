@@ -16,10 +16,10 @@ export const oraclize: FunctionOraclizer = async ({ query, network }) => {
 	)
 	const result = isUpdate
 		? {
-			message,
-			status: 0,
-			statusMessage: `${network} ${query.publicSignature}`,
-		}
+				message,
+				status: 0,
+				statusMessage: `${network} ${query.publicSignature}`,
+		  }
 		: undefined
 	return result
 }

@@ -17,5 +17,7 @@ export const lockupAbi = [
 ]
 
 export const getLockupAddress = (network: NetworkName): string => {
-	return network === 'mainnet' ? '0x54cb6A94D7191Df4E4b6F9C6Ce225427c0038593' : '0xb8b7a92A716318F2CCed7eA856BE029969552582'
+	return network === 'mainnet'
+		? '0x54cb6A94D7191Df4E4b6F9C6Ce225427c0038593'
+		: '0xb8b7a92A716318F2CCed7eA856BE029969552582'
 }

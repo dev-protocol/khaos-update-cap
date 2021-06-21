@@ -3,7 +3,6 @@ import { NetworkName } from '@devprotocol/khaos-core'
 import { bignumber, BigNumber as MathBigNumber } from 'mathjs'
 import { getErc20Instance, getDevAddress } from '../common'
 
-
 const UNISWAP_LP = '0x4168CEF0fCa0774176632d86bA26553E3B9cF59d'
 const WETH = '0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2'
 
