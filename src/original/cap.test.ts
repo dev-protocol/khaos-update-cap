@@ -4,12 +4,13 @@ import test from 'ava'
 import sinon from 'sinon'
 import { providers } from 'ethers'
 import { bignumber, BigNumber } from 'mathjs'
+import { NetworkName } from '@devprotocol/khaos-core'
 import { getCap } from './cap'
 import * as balanceModules from './balance'
 import * as graphqlModules from './graphql'
 
 let getDevBalanceOfLiquidityPool: sinon.SinonStub<
-	[provider: providers.BaseProvider],
+	[provider: providers.BaseProvider, network: NetworkName],
 	Promise<BigNumber>
 >
 let getWEthBalanceOfLiquidityPool: sinon.SinonStub<
@@ -36,7 +37,7 @@ test.before(() => {
 		'getDevBalanceOfLiquidityPool'
 	)
 	getDevBalanceOfLiquidityPool
-		.withArgs(null as any)
+		.withArgs(null as any, 'mainnet')
 		.resolves(bignumber('20000000000000000000000'))
 
 	getWEthBalanceOfLiquidityPool = sinon.stub(
@@ -70,7 +71,7 @@ test.before(() => {
 })
 
 test('get withdraw cap', async (t) => {
-	const res = await getCap(null as any)
+	const res = await getCap(null as any, 'mainnet')
 	t.is(
 		res.toFixed(),
 		'7152919319288666086753.21108429127155937377694420110723946810172'

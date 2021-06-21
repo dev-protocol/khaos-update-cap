@@ -4,6 +4,7 @@
 import test from 'ava'
 import { Contract } from 'ethers'
 import { bignumber, BigNumber } from 'mathjs'
+import { NetworkName } from '@devprotocol/khaos-core'
 import sinon from 'sinon'
 import { isUpdateCap } from './check'
 import * as checkDetailsModules from './check-details'
@@ -20,7 +21,7 @@ let isLatestLockedupEvent: sinon.SinonStub<
 >
 
 let getLockupInstance: sinon.SinonStub<
-	[provider: BaseProvider],
+	[provider: BaseProvider, network: NetworkName],
 	Promise<Contract>
 >
 
@@ -31,7 +32,7 @@ test.before(() => {
 		'isLatestLockedupEvent'
 	)
 	getLockupInstance = sinon.stub(commonModules, 'getLockupInstance')
-	getLockupInstance.withArgs(null as any).resolves(null as any)
+	getLockupInstance.withArgs(null as any, 'mainnet').resolves(null as any)
 })
 
 test('If it is the last event and the current value is the same.', async (t) => {
@@ -39,7 +40,7 @@ test('If it is the last event and the current value is the same.', async (t) => 
 	isLatestLockedupEvent
 		.withArgs(null as any, null as any, 'dummy-hash')
 		.resolves(true)
-	const res = await isUpdateCap(null as any, bignumber(100), 'dummy-hash')
+	const res = await isUpdateCap(null as any, 'mainnet', bignumber(100), 'dummy-hash')
 	t.false(res)
 })
 
@@ -48,7 +49,7 @@ test('If it is not the last event and the current value is the same.', async (t)
 	isLatestLockedupEvent
 		.withArgs(null as any, null as any, 'dummy-hash2')
 		.resolves(false)
-	const res = await isUpdateCap(null as any, bignumber(300), 'dummy-hash2')
+	const res = await isUpdateCap(null as any, 'mainnet', bignumber(300), 'dummy-hash2')
 	t.false(res)
 })
 
@@ -57,7 +58,7 @@ test('If it is the last event and the current value is different', async (t) => 
 	isLatestLockedupEvent
 		.withArgs(null as any, null as any, 'dummy-hash3')
 		.resolves(true)
-	const res = await isUpdateCap(null as any, bignumber(200), 'dummy-hash3')
+	const res = await isUpdateCap(null as any, 'mainnet', bignumber(200), 'dummy-hash3')
 	t.true(res)
 })
 
@@ -66,7 +67,7 @@ test('If it is not the last event and the current value is different', async (t)
 	isLatestLockedupEvent
 		.withArgs(null as any, null as any, 'dummy-hash4')
 		.resolves(false)
-	const res = await isUpdateCap(null as any, bignumber(400), 'dummy-hash4')
+	const res = await isUpdateCap(null as any, 'mainnet', bignumber(400), 'dummy-hash4')
 	t.false(res)
 })
 

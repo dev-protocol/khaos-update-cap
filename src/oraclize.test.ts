@@ -3,6 +3,7 @@
 /* eslint-disable @typescript-eslint/no-non-null-assertion */
 import test from 'ava'
 import { bignumber, BigNumber } from 'mathjs'
+import { NetworkName } from '@devprotocol/khaos-core'
 import sinon from 'sinon'
 import { oraclize } from './oraclize'
 import * as providerModules from './common'
@@ -11,9 +12,9 @@ import * as checkModules from './original'
 import { BaseProvider } from '@ethersproject/providers'
 
 let getProvider: sinon.SinonStub<[network: string], BaseProvider>
-let getCap: sinon.SinonStub<[provider: BaseProvider], Promise<BigNumber>>
+let getCap: sinon.SinonStub<[provider: BaseProvider, network: NetworkName], Promise<BigNumber>>
 let isUpdateCap: sinon.SinonStub<
-	[provider: BaseProvider, nextCap: BigNumber, transactionHash: string],
+	[provider: BaseProvider, network: NetworkName, nextCap: BigNumber, transactionHash: string],
 	Promise<boolean>
 >
 
@@ -26,12 +27,13 @@ test.before(() => {
 
 	getCap = sinon.stub(capModules, 'getCap')
 	getCap
-		.withArgs({ network: 'mainnet' } as any)
+		.withArgs({ network: 'mainnet' } as any, 'mainnet')
 		.resolves(bignumber(dummyNumber))
 	isUpdateCap = sinon.stub(checkModules, 'isUpdateCap')
 	isUpdateCap
 		.withArgs(
 			{ network: 'mainnet' } as any,
+			'mainnet',
 			bignumber(dummyNumber.split('.')[0]),
 			'dummy-transaction'
 		)
@@ -39,6 +41,7 @@ test.before(() => {
 	isUpdateCap
 		.withArgs(
 			{ network: 'mainnet' } as any,
+			'mainnet',
 			bignumber(dummyNumber.split('.')[0]),
 			'dummy-transaction2'
 		)

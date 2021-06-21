@@ -2,31 +2,7 @@
 /* eslint-disable functional/prefer-readonly-type */
 
 import test from 'ava'
-import { ethers } from 'ethers'
-import sinon from 'sinon'
-import { lockupAbi, getLockupInstance } from './lockup'
-import * as addressConfigModules from './addressConfig'
-
-let getAddressConfigInstance: sinon.SinonStub<
-	[provider: ethers.providers.BaseProvider],
-	Promise<ethers.Contract>
->
-
-const DUMMY_LOCKUP_ADDRESS = '0xF9A78B4fE89C11493dCcC66d95b1f071191149D5'
-
-const lockupFunc = async (): Promise<string> => {
-	return DUMMY_LOCKUP_ADDRESS
-}
-
-test.before(() => {
-	getAddressConfigInstance = sinon.stub(
-		addressConfigModules,
-		'getAddressConfigInstance'
-	)
-	getAddressConfigInstance
-		.withArgs(null as any)
-		.resolves({ lockup: lockupFunc } as any)
-})
+import { lockupAbi, getLockupInstance, getLockupAddress } from './lockup'
 
 // lockupAbi
 test('lthis function can get the ABI of the Lockup contract.', (t) => {
@@ -36,11 +12,23 @@ test('lthis function can get the ABI of the Lockup contract.', (t) => {
 })
 
 // getLockupInstance
-test('get the Lockup contract object.', async (t) => {
-	const lockup = await getLockupInstance(null as any)
-	t.is(lockup.address, DUMMY_LOCKUP_ADDRESS)
+test('get the mainnet Lockup contract object.', async (t) => {
+	const lockup = await getLockupInstance(null as any, 'mainnet')
+	t.is(lockup.address, '0x54cb6A94D7191Df4E4b6F9C6Ce225427c0038593')
 })
 
-test.after(() => {
-	getAddressConfigInstance.restore()
+test('get the ropsten Lockup contract object.', async (t) => {
+	const lockup = await getLockupInstance(null as any, 'ropsten')
+	t.is(lockup.address, '0xb8b7a92A716318F2CCed7eA856BE029969552582')
+})
+
+// getLockup
+test('Returns mainnet dev address', async (t) => {
+	const res = await getLockupAddress('mainnet')
+	t.is(res, '0x54cb6A94D7191Df4E4b6F9C6Ce225427c0038593')
+})
+
+test('Returns ropsten dev address', async (t) => {
+	const res = await getLockupAddress('ropsten')
+	t.is(res, '0xb8b7a92A716318F2CCed7eA856BE029969552582')
 })

@@ -10,18 +10,10 @@ import {
 	getDevBalanceOfLiquidityPool,
 } from './balance'
 
-let getAddressConfigInstance: sinon.SinonStub<
-	[provider: providers.BaseProvider],
-	Promise<Contract>
->
 let getErc20Instance: sinon.SinonStub<
 	[address: string, provider: providers.BaseProvider],
 	Contract
 >
-
-const tokenFunc = async (): Promise<string> => {
-	return 'dummy-dev-token-address'
-}
 
 const balanceOfFunc = async (address: string): Promise<BigNumber> => {
 	if (address == '0x4168CEF0fCa0774176632d86bA26553E3B9cF59d') {
@@ -31,16 +23,9 @@ const balanceOfFunc = async (address: string): Promise<BigNumber> => {
 }
 
 test.before(() => {
-	getAddressConfigInstance = sinon.stub(
-		contractModules,
-		'getAddressConfigInstance'
-	)
-	getAddressConfigInstance
-		.withArgs(null as any)
-		.returns({ token: tokenFunc } as any)
 	getErc20Instance = sinon.stub(contractModules, 'getErc20Instance')
 	getErc20Instance
-		.withArgs('dummy-dev-token-address', null as any)
+		.withArgs('0x5cAf454Ba92e6F2c929DF14667Ee360eD9fD5b26', null as any)
 		.returns({ balanceOf: balanceOfFunc } as any)
 	getErc20Instance
 		.withArgs('0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2', null as any)
@@ -49,7 +34,7 @@ test.before(() => {
 
 // getDevBalanceOfLiquidityPool
 test('get dev balance.', async (t) => {
-	const balance = await getDevBalanceOfLiquidityPool(null as any)
+	const balance = await getDevBalanceOfLiquidityPool(null as any, 'mainnet')
 	t.true(balance.eq(100))
 })
 
@@ -60,6 +45,5 @@ test('get weth balance.', async (t) => {
 })
 
 test.after(() => {
-	getAddressConfigInstance.restore()
 	getErc20Instance.restore()
 })
