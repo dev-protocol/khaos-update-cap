@@ -18,11 +18,13 @@ export const getAddressConfigInstance = async (
 		'function lockup() external view returns (address)',
 		'function token() external view returns (address)',
 	]
-	// https://eips.ethereum.org/EIPS/eip-155
-	const network = await provider.detectNetwork()
-	const address =
-		network.chainId === 1
-			? addresses.eth.main.registry
-			: addresses.eth.ropsten.registry
+	// // https://eips.ethereum.org/EIPS/eip-155
+	// const network = await provider.detectNetwork()
+	// const address =
+	// 	network.chainId === 1
+	// 		? addresses.eth.main.registry
+	// 		: addresses.eth.ropsten.registry
+	// eslint-disable-next-line functional/no-expression-statement
+	const address = '0x1D415aa39D647834786EB9B5a333A50e9935b796'
 	return new ethers.Contract(address, abi, provider)
 }
