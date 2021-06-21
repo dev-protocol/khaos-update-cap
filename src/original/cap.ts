@@ -1,4 +1,5 @@
 import { providers } from 'ethers'
+import { NetworkName } from '@devprotocol/khaos-core'
 import {
 	getDevBalanceOfLiquidityPool,
 	getWEthBalanceOfLiquidityPool,
@@ -9,9 +10,10 @@ import { calculateGeometricMean, calculateArithmeticMean } from './calculate'
 import { bignumber, BigNumber } from 'mathjs'
 
 export const getCap = async (
-	provider: providers.BaseProvider
+	provider: providers.BaseProvider,
+	network: NetworkName
 ): Promise<BigNumber> => {
-	const devBalance = await getDevBalanceOfLiquidityPool(provider)
+	const devBalance = await getDevBalanceOfLiquidityPool(provider, network)
 	const wEthBalance = await getWEthBalanceOfLiquidityPool(provider)
 	const authinticatedPropertoes = await getAuthinticatedProperty('v1')
 	const lockupSumValues = await getLockupSumValues('v1')

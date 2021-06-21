@@ -3,6 +3,8 @@ import {
 	getAddressConfigInstance,
 	getLockupInstance,
 	lockupAbi,
+	getLockupAddress,
+	getDevAddress,
 } from './contract'
 import { getProvider } from './provider'
 
@@ -12,4 +14,6 @@ export {
 	getAddressConfigInstance,
 	getLockupInstance,
 	lockupAbi,
+	getLockupAddress,
+	getDevAddress,
 }

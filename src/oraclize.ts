@@ -6,19 +6,20 @@ import { bignumber } from 'mathjs'
 
 export const oraclize: FunctionOraclizer = async ({ query, network }) => {
 	const provider = getProvider(network)
-	const cap = await getCap(provider)
+	const cap = await getCap(provider, network)
 	const [message] = cap.toFixed().split('.') // Forcibly truncates the decimal point regardless of the BigNumber specifications.
 	const isUpdate = await isUpdateCap(
 		provider,
+		network,
 		bignumber(message),
 		query.transactionhash
 	)
 	const result = isUpdate
 		? {
-				message,
-				status: 0,
-				statusMessage: `${network} ${query.publicSignature}`,
-		  }
+			message,
+			status: 0,
+			statusMessage: `${network} ${query.publicSignature}`,
+		}
 		: undefined
 	return result
 }
