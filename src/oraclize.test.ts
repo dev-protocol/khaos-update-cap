@@ -12,9 +12,17 @@ import * as checkModules from './original'
 import { BaseProvider } from '@ethersproject/providers'
 
 let getProvider: sinon.SinonStub<[network: string], BaseProvider>
-let getCap: sinon.SinonStub<[provider: BaseProvider, network: NetworkName], Promise<BigNumber>>
+let getCap: sinon.SinonStub<
+	[provider: BaseProvider, network: NetworkName],
+	Promise<BigNumber>
+>
 let isUpdateCap: sinon.SinonStub<
-	[provider: BaseProvider, network: NetworkName, nextCap: BigNumber, transactionHash: string],
+	[
+		provider: BaseProvider,
+		network: NetworkName,
+		nextCap: BigNumber,
+		transactionHash: string
+	],
 	Promise<boolean>
 >
 
