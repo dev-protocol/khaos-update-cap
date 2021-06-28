@@ -2,6 +2,7 @@ import { nodeResolve } from '@rollup/plugin-node-resolve'
 import commonjs from '@rollup/plugin-commonjs'
 import { terser } from 'rollup-plugin-terser'
 import json from '@rollup/plugin-json';
+import inject from '@rollup/plugin-inject';
 
 export default [
 	{
@@ -12,6 +13,8 @@ export default [
 				format: 'cjs',
 			},
 		],
-		plugins: [nodeResolve({ preferBuiltins: true }), commonjs(), terser(), json()],
+		plugins: [nodeResolve({ preferBuiltins: true }), commonjs(), terser(), json(), inject({
+			fetch: ['cross-fetch', 'fetch']
+		})],
 	},
 ]
