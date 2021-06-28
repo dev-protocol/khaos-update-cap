@@ -1,6 +1,6 @@
 /* eslint-disable functional/immutable-data */
 /* eslint-disable functional/no-expression-statement */
-import fetch from 'cross-fetch';
+import fetch from 'cross-fetch'
 import { FunctionOraclizer } from '@devprotocol/khaos-core'
 import { getProvider } from './common'
 import { isUpdateCap } from './original'
@@ -19,10 +19,10 @@ export const oraclize: FunctionOraclizer = async ({ query, network }) => {
 	)
 	const result = isUpdate
 		? {
-			message,
-			status: 0,
-			statusMessage: `${network} ${query.publicSignature}`,
-		}
+				message,
+				status: 0,
+				statusMessage: `${network} ${query.publicSignature}`,
+		  }
 		: undefined
 	return result
 }
