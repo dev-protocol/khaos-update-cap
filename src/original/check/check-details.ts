@@ -5,8 +5,8 @@ export const isSameVal = async (
 	lockup: ethers.Contract,
 	nextCap: BigNumber
 ): Promise<boolean> => {
-	const cap: BigNumber = await lockup.cap()
-	return bignumber(cap).eq(nextCap)
+	const cap = await lockup.cap()
+	return bignumber(cap.toString()).eq(nextCap)
 }
 
 export const isLatestLockedupEvent = async (
