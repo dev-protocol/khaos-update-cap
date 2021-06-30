@@ -4,16 +4,16 @@ import { isSameVal, isLatestLockedupEvent } from './check-details'
 import { bignumber, BigNumber } from 'mathjs'
 
 test('If the values are the same, true will be returned.', async (t) => {
-	const capFunc = async (): Promise<BigNumber> => {
-		return bignumber(100)
+	const capFunc = async (): Promise<any> => {
+		return bignumber(100) as any
 	}
 	const res = await isSameVal({ cap: capFunc } as any, bignumber('100'))
 	t.true(res)
 })
 
 test('If the value is different, false will be returned.', async (t) => {
-	const capFunc = async (): Promise<BigNumber> => {
-		return bignumber(200)
+	const capFunc = async (): Promise<any> => {
+		return bignumber(200) as any
 	}
 	const res = await isSameVal({ cap: capFunc } as any, bignumber(100))
 	t.false(res)
