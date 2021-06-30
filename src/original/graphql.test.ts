@@ -5,7 +5,6 @@ import BigNumber from 'bignumber.js'
 import { getLockupSumValues, getAuthinticatedProperty } from './graphql'
 
 test('get the data for lockup sum values.', async (t) => {
-	t.timeout(1000000)
 	const lockupSumValues = await getLockupSumValues('v1')
 	t.is(lockupSumValues.length > 0, true)
 	lockupSumValues.map((data) => {
@@ -16,7 +15,6 @@ test('get the data for lockup sum values.', async (t) => {
 })
 
 test('Property_authintication data can be retrieved.', async (t) => {
-	t.timeout(1000000)
 	const lockupSumValues = await getAuthinticatedProperty('v1')
 	t.is(lockupSumValues.length > 0, true)
 	lockupSumValues.map((data) => {

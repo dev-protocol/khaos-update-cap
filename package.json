@@ -3,7 +3,7 @@
 	"private": true,
 	"description": "Khaos update cap",
 	"scripts": {
-		"test": "ava",
+		"test": "ava --timeout=5m",
 		"build": "tsc",
 		"watch": "tsc -w",
 		"pretest": "yarn build",
