@@ -3,75 +3,63 @@
 
 import test from 'ava'
 import { Contract } from 'ethers'
-import { bignumber, BigNumber } from 'mathjs'
 import sinon from 'sinon'
 import { isUpdateCap } from './check'
 import * as checkDetailsModules from './check-details'
-import * as commonModules from './../../common'
 import { BaseProvider } from '@ethersproject/providers'
 
-let isSameVal: sinon.SinonStub<
-	[lockup: Contract, nextCap: BigNumber],
-	Promise<boolean>
->
+
+let isLongTimeSinceLastUpdate: sinon.SinonStub<[provider: BaseProvider, lockup: Contract], Promise<boolean>>
+
 let isLatestLockedupEvent: sinon.SinonStub<
 	[provider: BaseProvider, lockup: Contract, transactionHash: string],
 	Promise<boolean>
 >
 
-let getLockupInstance: sinon.SinonStub<
-	[provider: BaseProvider],
-	Promise<Contract>
->
 
 test.before(() => {
-	isSameVal = sinon.stub(checkDetailsModules, 'isSameVal')
 	isLatestLockedupEvent = sinon.stub(
 		checkDetailsModules,
 		'isLatestLockedupEvent'
 	)
-	getLockupInstance = sinon.stub(commonModules, 'getLockupInstance')
-	getLockupInstance.withArgs(null as any).resolves(null as any)
+	isLongTimeSinceLastUpdate = sinon.stub(
+		checkDetailsModules,
+		'isLongTimeSinceLastUpdate'
+	)
 })
 
 test('If it is the last event and the current value is the same.', async (t) => {
-	isSameVal.withArgs(null as any, bignumber(100)).resolves(true)
-	isLatestLockedupEvent
-		.withArgs(null as any, null as any, 'dummy-hash')
+	isLongTimeSinceLastUpdate
+		.withArgs({ meinnet: 'net1' } as any, { lockup: 'lockup1' } as any)
 		.resolves(true)
-	const res = await isUpdateCap(null as any, bignumber(100), 'dummy-hash')
-	t.false(res)
+	isLatestLockedupEvent
+		.withArgs({ meinnet: 'net1' } as any, { lockup: 'lockup1' } as any, 'dummy-hash1')
+		.resolves(true)
+	const res = await isUpdateCap({ meinnet: 'net1' } as any, { lockup: 'lockup1' } as any, 'dummy-hash1')
+	t.true(res)
 })
 
 test('If it is not the last event and the current value is the same.', async (t) => {
-	isSameVal.withArgs(null as any, bignumber(300)).resolves(true)
-	isLatestLockedupEvent
-		.withArgs(null as any, null as any, 'dummy-hash2')
+	isLongTimeSinceLastUpdate
+		.withArgs({ meinnet: 'net2' } as any, { lockup: 'lockup2' } as any)
 		.resolves(false)
-	const res = await isUpdateCap(null as any, bignumber(300), 'dummy-hash2')
+	const res = await isUpdateCap({ meinnet: 'net2' } as any, { lockup: 'lockup2' } as any, 'dummy-hash2')
 	t.false(res)
 })
 
 test('If it is the last event and the current value is different', async (t) => {
-	isSameVal.withArgs(null as any, bignumber(200)).resolves(false)
-	isLatestLockedupEvent
-		.withArgs(null as any, null as any, 'dummy-hash3')
+	isLongTimeSinceLastUpdate
+		.withArgs({ meinnet: 'net3' } as any, { lockup: 'lockup3' } as any)
 		.resolves(true)
-	const res = await isUpdateCap(null as any, bignumber(200), 'dummy-hash3')
-	t.true(res)
-})
-
-test('If it is not the last event and the current value is different', async (t) => {
-	isSameVal.withArgs(null as any, bignumber(400)).resolves(false)
 	isLatestLockedupEvent
-		.withArgs(null as any, null as any, 'dummy-hash4')
+		.withArgs({ meinnet: 'net3' } as any, { lockup: 'lockup3' } as any, 'dummy-hash3')
 		.resolves(false)
-	const res = await isUpdateCap(null as any, bignumber(400), 'dummy-hash4')
+	const res = await isUpdateCap({ meinnet: 'net3' } as any, { lockup: 'lockup3' } as any, 'dummy-hash3')
 	t.false(res)
 })
 
+
 test.after(() => {
-	isSameVal.restore()
 	isLatestLockedupEvent.restore()
-	getLockupInstance.restore()
+	isLongTimeSinceLastUpdate.restore()
 })

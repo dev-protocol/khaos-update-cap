@@ -31,8 +31,9 @@ test.before(() => {
 // lockupAbi
 test('lthis function can get the ABI of the Lockup contract.', (t) => {
 	t.is(lockupAbi[0], 'event Lockedup(address, address, uint256)')
-	t.is(lockupAbi[1], 'function updateCap(uint256) external')
-	t.is(lockupAbi[2], 'function cap() external view returns (uint256)')
+	t.is(lockupAbi[1], 'event UpdateCap(uint256)')
+	t.is(lockupAbi[2], 'function updateCap(uint256) external')
+	t.is(lockupAbi[3], 'function cap() external view returns (uint256)')
 })
 
 // getLockupInstance
