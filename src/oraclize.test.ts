@@ -13,9 +13,18 @@ import { Contract } from '@ethersproject/contracts'
 
 let getProvider: sinon.SinonStub<[network: string], BaseProvider>
 let getCap: sinon.SinonStub<[provider: BaseProvider], Promise<BigNumber>>
-let isUpdateCap: sinon.SinonStub<[provider: BaseProvider, lockupContract: Contract, transactionHash: string], Promise<boolean>>
-let isSameVal: sinon.SinonStub<[lockup: Contract, nextCap: BigNumber], Promise<boolean>>
-let getLockupInstance: sinon.SinonStub<[provider: BaseProvider], Promise<Contract>>
+let isUpdateCap: sinon.SinonStub<
+	[provider: BaseProvider, lockupContract: Contract, transactionHash: string],
+	Promise<boolean>
+>
+let isSameVal: sinon.SinonStub<
+	[lockup: Contract, nextCap: BigNumber],
+	Promise<boolean>
+>
+let getLockupInstance: sinon.SinonStub<
+	[provider: BaseProvider],
+	Promise<Contract>
+>
 
 const dummyNumber =
 	'3175573141986827732.839958658618868394957633106846215492361'
@@ -24,7 +33,9 @@ test.before(() => {
 	getProvider = sinon.stub(providerModules, 'getProvider')
 	getProvider.withArgs('mainnet').returns({ network: 'mainnet' } as any)
 	getLockupInstance = sinon.stub(providerModules, 'getLockupInstance')
-	getLockupInstance.withArgs({ network: 'mainnet' } as any).returns({ name: 'lockup' } as any)
+	getLockupInstance
+		.withArgs({ network: 'mainnet' } as any)
+		.returns({ name: 'lockup' } as any)
 	isUpdateCap = sinon.stub(checkModules, 'isUpdateCap')
 	getCap = sinon.stub(capModules, 'getCap')
 	isSameVal = sinon.stub(checkModules, 'isSameVal')
@@ -42,10 +53,7 @@ test('Returns oraclize data', async (t) => {
 		.withArgs({ network: 'mainnet' } as any)
 		.resolves(bignumber(dummyNumber))
 	isSameVal
-		.withArgs(
-			{ name: 'lockup' } as any,
-			bignumber(dummyNumber.split('.')[0])
-		)
+		.withArgs({ name: 'lockup' } as any, bignumber(dummyNumber.split('.')[0]))
 		.resolves(false)
 	const query = {
 		transactionhash: 'dummy-transaction',

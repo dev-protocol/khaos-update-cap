@@ -1,7 +1,11 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import test from 'ava'
 import equal from 'deep-equal'
-import { isSameVal, isLatestLockedupEvent, isLongTimeSinceLastUpdate } from './check-details'
+import {
+	isSameVal,
+	isLatestLockedupEvent,
+	isLongTimeSinceLastUpdate,
+} from './check-details'
 import { bignumber } from 'mathjs'
 
 test('If the values are the same, true will be returned.', async (t) => {
@@ -86,17 +90,9 @@ test('If there is an update cap event within the default block number', async (t
 		blockNumber: any,
 		flg: string
 	): Promise<readonly [any]> => {
-		t.true(
-			equal(arg1, { filter: {} })
-		)
-		t.is(
-			blockNumber,
-			14300000
-		)
-		t.is(
-			flg,
-			'latest'
-		)
+		t.true(equal(arg1, { filter: {} }))
+		t.is(blockNumber, 14300000)
+		t.is(flg, 'latest')
 		return ['dummy']
 	}
 	const res = await isLongTimeSinceLastUpdate(
@@ -106,7 +102,7 @@ test('If there is an update cap event within the default block number', async (t
 				UpdateCap: UpdateCapFunc,
 			},
 			queryFilter: queryFilterFunc,
-		} as any,
+		} as any
 	)
 	t.false(res)
 })
@@ -123,17 +119,9 @@ test('If there is no update cap event within the default block number', async (t
 		blockNumber: any,
 		flg: string
 	): Promise<readonly []> => {
-		t.true(
-			equal(arg1, { filter: {} })
-		)
-		t.is(
-			blockNumber,
-			14310000
-		)
-		t.is(
-			flg,
-			'latest'
-		)
+		t.true(equal(arg1, { filter: {} }))
+		t.is(blockNumber, 14310000)
+		t.is(flg, 'latest')
 		return []
 	}
 	const res = await isLongTimeSinceLastUpdate(
@@ -143,7 +131,7 @@ test('If there is no update cap event within the default block number', async (t
 				UpdateCap: UpdateCapFunc,
 			},
 			queryFilter: queryFilterFunc,
-		} as any,
+		} as any
 	)
 	t.true(res)
 })
