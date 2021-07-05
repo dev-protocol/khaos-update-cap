@@ -33,10 +33,14 @@ const BLOCK_NUMBER_SPAN = 5760
 
 export const isLongTimeSinceLastUpdate = async (
 	provider: providers.BaseProvider,
-	lockup: ethers.Contract,
+	lockup: ethers.Contract
 ): Promise<boolean> => {
 	const currentBlockNumber = await provider.getBlockNumber()
 	const updateCap = lockup.filters.UpdateCap()
-	const events = await lockup.queryFilter(updateCap, currentBlockNumber - BLOCK_NUMBER_SPAN, 'latest')
+	const events = await lockup.queryFilter(
+		updateCap,
+		currentBlockNumber - BLOCK_NUMBER_SPAN,
+		'latest'
+	)
 	return events.length === 0
 }
