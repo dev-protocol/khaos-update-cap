@@ -1,4 +1,4 @@
 import { getCap } from './cap'
-import { isUpdateCap } from './check'
+import { isUpdateCap, isSameVal } from './check'
 
-export { getCap, isUpdateCap }
+export { getCap, isUpdateCap, isSameVal }

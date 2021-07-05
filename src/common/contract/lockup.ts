@@ -12,6 +12,7 @@ export const getLockupInstance = async (
 
 export const lockupAbi = [
 	'event Lockedup(address, address, uint256)',
+	'event UpdateCap(uint256)',
 	'function updateCap(uint256) external',
 	'function cap() external view returns (uint256)',
 ]

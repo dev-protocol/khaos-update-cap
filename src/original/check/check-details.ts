@@ -28,3 +28,15 @@ const getTransactionBlockNumber = async (
 	// eslint-disable-next-line @typescript-eslint/no-non-null-assertion
 	return transaction.blockNumber!
 }
+
+const BLOCK_NUMBER_SPAN = 5760
+
+export const isLongTimeSinceLastUpdate = async (
+	provider: providers.BaseProvider,
+	lockup: ethers.Contract,
+): Promise<boolean> => {
+	const currentBlockNumber = await provider.getBlockNumber()
+	const updateCap = lockup.filters.UpdateCap()
+	const events = await lockup.queryFilter(updateCap, currentBlockNumber - BLOCK_NUMBER_SPAN, 'latest')
+	return events.length === 0
+}
