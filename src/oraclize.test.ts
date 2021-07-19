@@ -9,12 +9,21 @@ import * as providerModules from './common'
 import * as capModules from './original'
 import * as checkModules from './original'
 import { BaseProvider } from '@ethersproject/providers'
+import { Contract } from '@ethersproject/contracts'
 
 let getProvider: sinon.SinonStub<[network: string], BaseProvider>
 let getCap: sinon.SinonStub<[provider: BaseProvider], Promise<BigNumber>>
 let isUpdateCap: sinon.SinonStub<
-	[provider: BaseProvider, nextCap: BigNumber, transactionHash: string],
+	[provider: BaseProvider, lockupContract: Contract, transactionHash: string],
 	Promise<boolean>
+>
+let isSameVal: sinon.SinonStub<
+	[lockup: Contract, nextCap: BigNumber],
+	Promise<boolean>
+>
+let getLockupInstance: sinon.SinonStub<
+	[provider: BaseProvider],
+	Promise<Contract>
 >
 
 const dummyNumber =
@@ -23,29 +32,29 @@ const dummyNumber =
 test.before(() => {
 	getProvider = sinon.stub(providerModules, 'getProvider')
 	getProvider.withArgs('mainnet').returns({ network: 'mainnet' } as any)
-
-	getCap = sinon.stub(capModules, 'getCap')
-	getCap
+	getLockupInstance = sinon.stub(providerModules, 'getLockupInstance')
+	getLockupInstance
 		.withArgs({ network: 'mainnet' } as any)
-		.resolves(bignumber(dummyNumber))
+		.returns({ name: 'lockup' } as any)
 	isUpdateCap = sinon.stub(checkModules, 'isUpdateCap')
-	isUpdateCap
-		.withArgs(
-			{ network: 'mainnet' } as any,
-			bignumber(dummyNumber.split('.')[0]),
-			'dummy-transaction'
-		)
-		.resolves(true)
-	isUpdateCap
-		.withArgs(
-			{ network: 'mainnet' } as any,
-			bignumber(dummyNumber.split('.')[0]),
-			'dummy-transaction2'
-		)
-		.resolves(false)
+	getCap = sinon.stub(capModules, 'getCap')
+	isSameVal = sinon.stub(checkModules, 'isSameVal')
 })
 
 test('Returns oraclize data', async (t) => {
+	isUpdateCap
+		.withArgs(
+			{ network: 'mainnet' } as any,
+			{ name: 'lockup' } as any,
+			'dummy-transaction'
+		)
+		.resolves(true)
+	getCap
+		.withArgs({ network: 'mainnet' } as any)
+		.resolves(bignumber(dummyNumber))
+	isSameVal
+		.withArgs({ name: 'lockup' } as any, bignumber(dummyNumber.split('.')[0]))
+		.resolves(false)
 	const query = {
 		transactionhash: 'dummy-transaction',
 		publicSignature: 'dummy-sig',
@@ -61,6 +70,13 @@ test('Returns oraclize data', async (t) => {
 })
 
 test('Returns undefind', async (t) => {
+	isUpdateCap
+		.withArgs(
+			{ network: 'mainnet' } as any,
+			{ name: 'lockup' } as any,
+			'dummy-transaction2'
+		)
+		.resolves(false)
 	const query = {
 		transactionhash: 'dummy-transaction2',
 		publicSignature: 'dummy-sig',
@@ -77,4 +93,6 @@ test.after(() => {
 	getProvider.restore()
 	getCap.restore()
 	isUpdateCap.restore()
+	isSameVal.restore()
+	getLockupInstance.restore()
 })
