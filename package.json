@@ -25,7 +25,7 @@
 		"bent": "7.3.12",
 		"bignumber.js": "9.0.1",
 		"cross-fetch": "3.1.4",
-		"ethers": "5.4.5",
+		"ethers": "5.4.6",
 		"mathjs": "9.4.4",
 		"ramda": "0.27.1"
 	},
