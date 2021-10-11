@@ -934,10 +934,10 @@
   dependencies:
     arrify "^1.0.1"
 
-"@devprotocol/dev-kit@5.1.1":
-  version "5.1.1"
-  resolved "https://registry.yarnpkg.com/@devprotocol/dev-kit/-/dev-kit-5.1.1.tgz#54bc33b7f55c6241eaf87711c563a50f6c420219"
-  integrity sha512-e86JBhVw+G125afmcAGrA5LMJLr2Gwedkw0Fw/G4ShZNehQECbRMgUq2MRTSNlqLlQr0OZuNDR3lbmDcVkTAzw==
+"@devprotocol/dev-kit@5.2.2":
+  version "5.2.2"
+  resolved "https://registry.yarnpkg.com/@devprotocol/dev-kit/-/dev-kit-5.2.2.tgz#df0f32af3c2d4706f687bb863f83badca2f02008"
+  integrity sha512-YxQIFX21lTGFjoKNVWlJGv4NC8SVHCEsnLJ9vIXUX2U0tx1AvQney7KtG4UeLm+idxo1rtz3do2s407g3ANUcg==
   dependencies:
     "@types/bent" "^7.3.1"
     async-ray "^3.2.0"
