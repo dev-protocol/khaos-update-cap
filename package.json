@@ -18,7 +18,7 @@
 	},
 	"dependencies": {
 		"@devprotocol/dev-kit": "5.4.2",
-		"@devprotocol/khaos-core": "1.5.0",
+		"@devprotocol/khaos-core": "1.5.1",
 		"@types/bent": "7.3.2",
 		"@types/mathjs": "9.4.1",
 		"@types/sinon": "10.0.4",
