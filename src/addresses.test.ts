@@ -38,6 +38,12 @@ test('Returns ropsten lockup address', async (t) => {
 	const res = await addresses({ network: 'ropsten' })
 	t.is(res, 'ropsten-address')
 })
+
+test('Returns undefinded', async (t) => {
+	const res = await addresses({ network: 'arbitrum-one' })
+	t.is(res, undefined)
+})
+
 test.after(() => {
 	getProvider.restore()
 	getLockupInstance.restore()
