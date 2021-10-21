@@ -4,12 +4,13 @@ import {
 	getLockupInstance,
 	lockupAbi,
 } from './contract'
-import { getProvider } from './provider'
+import { getProvider, isL1 } from './provider'
 
 export {
 	getProvider,
 	getErc20Instance,
 	getAddressConfigInstance,
 	getLockupInstance,
+	isL1,
 	lockupAbi,
 }
