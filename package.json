@@ -17,7 +17,7 @@
 		"prepare": "husky install"
 	},
 	"dependencies": {
-		"@devprotocol/dev-kit": "5.8.0",
+		"@devprotocol/dev-kit": "5.8.1",
 		"@devprotocol/khaos-core": "1.5.1",
 		"@types/bent": "7.3.2",
 		"@types/mathjs": "9.4.1",
