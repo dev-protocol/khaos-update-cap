@@ -2128,10 +2128,10 @@
   resolved "https://registry.yarnpkg.com/@types/q/-/q-1.5.4.tgz#15925414e0ad2cd765bfef58842f7e26a7accb24"
   integrity sha512-1HcDas8SEj4z1Wc696tH56G8OlRaH/sqZOynNNB+HF0WOeXPaxTtbYzJY2oEfiUxjSKjhCKr+MvR7dCHcEelug==
 
-"@types/ramda@0.27.63":
-  version "0.27.63"
-  resolved "https://registry.yarnpkg.com/@types/ramda/-/ramda-0.27.63.tgz#a5cd903e229e0aa603395adf4da58c9298b1dd4a"
-  integrity sha512-gG8P2Y54L1O0Q4fz+y93BJZ6//p1kyvej1hFFsmPk4A/bnB6twY/5SYYmavxlhby5uB5GPYVrrREH9BTaocAjw==
+"@types/ramda@0.27.64":
+  version "0.27.64"
+  resolved "https://registry.yarnpkg.com/@types/ramda/-/ramda-0.27.64.tgz#7e23f2bf7b9729bcbd59223f100460ead6829008"
+  integrity sha512-EDf++ss/JoMiDpvT1MuA8oi88OwpvmqVE+o8Ojm5v/5bdJEPZ6eIQd/XYAeQ0imlwG6Tf0Npfq4Z9w3hAKBk9Q==
   dependencies:
     ts-toolbelt "^6.15.1"
 
@@ -10051,10 +10051,10 @@ quote-stream@^1.0.1, quote-stream@~1.0.2:
     minimist "^1.1.3"
     through2 "^2.0.0"
 
-ramda@0.27.2:
-  version "0.27.2"
-  resolved "https://registry.yarnpkg.com/ramda/-/ramda-0.27.2.tgz#84463226f7f36dc33592f6f4ed6374c48306c3f1"
-  integrity sha512-SbiLPU40JuJniHexQSAgad32hfwd+DRUdwF2PlVuI5RZD0/vahUco7R8vD86J/tcEKKF9vZrUVwgtmGCqlCKyA==
+ramda@0.28.0:
+  version "0.28.0"
+  resolved "https://registry.yarnpkg.com/ramda/-/ramda-0.28.0.tgz#acd785690100337e8b063cab3470019be427cc97"
+  integrity sha512-9QnLuG/kPVgWvMQ4aODhsBUFKOUmnbUnsSXACv+NCQZcHbeb+v8Lodp8OVxtRULN1/xOyYLLaL6npE6dMq5QTA==
 
 ramda@^0.27.0, ramda@^0.27.1:
   version "0.27.1"
