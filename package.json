@@ -43,7 +43,7 @@
 		"eslint": "8.10.0",
 		"@types/deep-equal": "1.0.1",
 		"deep-equal": "2.0.5",
-		"eslint-config-prettier": "8.4.0",
+		"eslint-config-prettier": "8.5.0",
 		"eslint-plugin-functional": "4.2.0",
 		"esm": "3.2.25",
 		"husky": "7.0.4",
