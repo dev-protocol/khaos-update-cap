@@ -927,10 +927,10 @@
   dependencies:
     arrify "^1.0.1"
 
-"@devprotocol/dev-kit@6.8.0":
-  version "6.8.0"
-  resolved "https://registry.yarnpkg.com/@devprotocol/dev-kit/-/dev-kit-6.8.0.tgz#4e896c25a91b263873903b17b59b4636a69266c1"
-  integrity sha512-YA1E1vM/cILD00JH5dXbrMmYNWzwYeKwV3dUST9zZ1zH2ahGjsYI0NV+Cg9B3O/n8f6cpO90xyQFisEBy0/VZg==
+"@devprotocol/dev-kit@6.8.1":
+  version "6.8.1"
+  resolved "https://registry.yarnpkg.com/@devprotocol/dev-kit/-/dev-kit-6.8.1.tgz#25dd277e2d7881664a6d94e1bed3171c3a0f14ce"
+  integrity sha512-kGe9ahGwtmSO540chFKP8kd2FWlVrR9jfmOlntzdKSP1Qul19fVExruw6YscXZFveA5uBvxp4K2f7StPb1DThQ==
   dependencies:
     "@devprotocol/util-ts" "^2.2.1"
     "@types/bent" "^7.3.1"
