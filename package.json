@@ -35,7 +35,7 @@
 		"@rollup/plugin-json": "4.1.0",
 		"@rollup/plugin-node-resolve": "14.1.0",
 		"@rollup/plugin-inject": "4.0.4",
-		"@types/node": "16.18.19",
+		"@types/node": "16.18.20",
 		"@types/ramda": "0.28.23",
 		"@typescript-eslint/eslint-plugin": "5.46.1",
 		"@typescript-eslint/parser": "5.46.1",
