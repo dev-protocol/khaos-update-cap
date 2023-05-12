@@ -21,7 +21,7 @@
 		"@devprotocol/khaos-core": "1.6.0",
 		"@types/bent": "7.3.3",
 		"@types/mathjs": "9.4.1",
-		"@types/sinon": "10.0.13",
+		"@types/sinon": "10.0.14",
 		"bent": "7.3.12",
 		"bignumber.js": "9.1.1",
 		"cross-fetch": "3.1.5",
