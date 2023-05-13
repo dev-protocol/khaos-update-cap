@@ -927,18 +927,15 @@
   dependencies:
     arrify "^1.0.1"
 
-"@devprotocol/dev-kit@6.10.0":
-  version "6.10.0"
-  resolved "https://registry.yarnpkg.com/@devprotocol/dev-kit/-/dev-kit-6.10.0.tgz#4599812a4f588d7892ced821857094f56f023710"
-  integrity sha512-gb4W8t2VohdukHZlsszZ6u3KjEk106MJpO6vXt5E0E0webYoimzqfWuT5cCcI1UcphKJnyN3Lz22O8P4T4bgcA==
+"@devprotocol/dev-kit@7.3.4":
+  version "7.3.4"
+  resolved "https://registry.yarnpkg.com/@devprotocol/dev-kit/-/dev-kit-7.3.4.tgz#f2c6fb8dc38b8bb51c8ba021ac612dec0a8e6114"
+  integrity sha512-SUdAIJIOviOsKZCMVHit3spEoIuyouQhwlMNhceK02G4Bp/iwgtVocn7z96nmJZ0J8M+RqEySgj3gyKoADjpEg==
   dependencies:
-    "@devprotocol/util-ts" "^2.2.1"
-    "@types/bent" "^7.3.1"
-    async-ray "^3.2.0"
-    bent "^7.3.12"
-    bignumber.js "9.1.0"
+    "@devprotocol/util-ts" "3.0.0"
+    bignumber.js "9.1.1"
     js-base64 "^3.7.2"
-    ramda "^0.28.0"
+    ramda "^0.29.0"
 
 "@devprotocol/khaos-core@1.6.0":
   version "1.6.0"
@@ -951,7 +948,7 @@
     jsonwebtoken "^8.5.1"
     ramda "^0.27.1"
 
-"@devprotocol/util-ts@2.2.1", "@devprotocol/util-ts@^2.2.1":
+"@devprotocol/util-ts@2.2.1":
   version "2.2.1"
   resolved "https://registry.yarnpkg.com/@devprotocol/util-ts/-/util-ts-2.2.1.tgz#331b0c29b3837589bcb16f143afb9a51495238cc"
   integrity sha512-IadCVRL5hxxX2wvWZ/ErzpKOIIzZA/YHUWuGn6Ycg2PZ3Iq4asjtpezltQ2FmIBFciBVIl9E4E+1UMLrQbAMCg==
@@ -962,6 +959,14 @@
     ramda "^0.27.1"
     sinon "9.2.4"
     url-join "4.0.1"
+
+"@devprotocol/util-ts@3.0.0":
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/@devprotocol/util-ts/-/util-ts-3.0.0.tgz#031b251d59dfd9199a4beee421d8b28c0d2ee7aa"
+  integrity sha512-oDg7IeJCeAajGGG79C+UXJE7pKrGsDui3yn9yxSx5SpGFejlAJ3E3af9CpF+uK71NNropglbf/W4KCs2unpGaA==
+  dependencies:
+    ethers "^5.7.2"
+    ramda "^0.28.0"
 
 "@ensdomains/ens@^0.4.4":
   version "0.4.5"
@@ -2068,13 +2073,6 @@
   dependencies:
     "@types/node" "*"
 
-"@types/bent@^7.3.1":
-  version "7.3.2"
-  resolved "https://registry.yarnpkg.com/@types/bent/-/bent-7.3.2.tgz#07b4f7bcec577be27cdb9e9034eb0de0242481a7"
-  integrity sha512-wtE/+NIk55jVUHJFt//kxmq8cQ7ef4J2U9HO7lZqKW4lvvPYTd7KfAEKZLsFmDgmzzMvfd4cPSdv3blqVWmqSQ==
-  dependencies:
-    "@types/node" "*"
-
 "@types/bn.js@^4.11.3", "@types/bn.js@^4.11.5":
   version "4.11.6"
   resolved "https://registry.yarnpkg.com/@types/bn.js/-/bn.js-4.11.6.tgz#c306c70d9358aaea33cd4eda092a742b9505967c"
@@ -2689,11 +2687,6 @@ async-limiter@~1.0.0:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/async-limiter/-/async-limiter-1.0.1.tgz#dd379e94f0db8310b08291f9d64c3209766617fd"
   integrity sha512-csOlWGAcRFJaI6m+F2WKdnMKr4HhdhFVBk0H/QbJFMCr+uO2kwohwXQPxw/9OCxp05r5ghVBFSyioixx3gfkNQ==
-
-async-ray@^3.2.0:
-  version "3.2.0"
-  resolved "https://registry.yarnpkg.com/async-ray/-/async-ray-3.2.0.tgz#331e1b3549a80b456304b37a3d43939c6170164d"
-  integrity sha512-w1t9m2Wp0A+yQ5xaBxbOMVuZAxdZEntQAiOoV3JaDsLlme+oqdKmi5k0z0lJPoEy7zmD7mfqKgBw7kzaKc+ZRQ==
 
 async@2.6.2:
   version "2.6.2"
@@ -3416,7 +3409,7 @@ bech32@1.1.4:
   resolved "https://registry.yarnpkg.com/bech32/-/bech32-1.1.4.tgz#e38c9f37bf179b8eb16ae3a772b40c356d4832e9"
   integrity sha512-s0IrSOzLlbvX7yp4WBfPITzpAU8sqQcpsmwXDiKwrG4r491vwCO/XpejasRNl0piBMe/DvP4Tz0mIS/X1DPJBQ==
 
-bent@7.3.12, bent@^7.3.12:
+bent@7.3.12:
   version "7.3.12"
   resolved "https://registry.yarnpkg.com/bent/-/bent-7.3.12.tgz#e0a2775d4425e7674c64b78b242af4f49da6b035"
   integrity sha512-T3yrKnVGB63zRuoco/7Ybl7BwwGZR0lceoVG5XmQyMIH9s19SV5m+a8qam4if0zQuAmOQTyPTPmsQBdAorGK3w==
@@ -3424,11 +3417,6 @@ bent@7.3.12, bent@^7.3.12:
     bytesish "^0.4.1"
     caseless "~0.12.0"
     is-stream "^2.0.0"
-
-bignumber.js@9.1.0:
-  version "9.1.0"
-  resolved "https://registry.yarnpkg.com/bignumber.js/-/bignumber.js-9.1.0.tgz#8d340146107fe3a6cb8d40699643c302e8773b62"
-  integrity sha512-4LwHK4nfDOraBCtst+wOWIHbu1vhvAPJK8g8nROd4iuc3PSEjWif/qwbkh8jwCJz6yDBvtU4KPynETgrfh7y3A==
 
 bignumber.js@9.1.1:
   version "9.1.1"
@@ -5861,7 +5849,7 @@ ethereumjs-wallet@0.6.5:
     utf8 "^3.0.0"
     uuid "^3.3.2"
 
-ethers@5.7.2:
+ethers@5.7.2, ethers@^5.7.2:
   version "5.7.2"
   resolved "https://registry.yarnpkg.com/ethers/-/ethers-5.7.2.tgz#3a7deeabbb8c030d4126b24f84e525466145872e"
   integrity sha512-wswUsmWo1aOK8rR7DIKiWSw9DbLWe6x98Jrn8wcTflTVvaXhAMaB5zGAXy0GYQEQp9iO1iSHWVyARQm11zUtyg==
@@ -10337,7 +10325,7 @@ quote-stream@^1.0.1, quote-stream@~1.0.2:
     minimist "^1.1.3"
     through2 "^2.0.0"
 
-ramda@0.29.0:
+ramda@0.29.0, ramda@^0.29.0:
   version "0.29.0"
   resolved "https://registry.yarnpkg.com/ramda/-/ramda-0.29.0.tgz#fbbb67a740a754c8a4cbb41e2a6e0eb8507f55fb"
   integrity sha512-BBea6L67bYLtdbOqfp8f58fPMqEwx0doL+pAi8TZyp2YWz8R9G8z9x75CZI8W+ftqhFHCpEX2cRnUUXK130iKA==
