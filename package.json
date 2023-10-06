@@ -23,7 +23,7 @@
 		"@types/mathjs": "9.4.1",
 		"@types/sinon": "10.0.18",
 		"bent": "7.3.12",
-		"bignumber.js": "9.1.1",
+		"bignumber.js": "9.1.2",
 		"cross-fetch": "3.1.5",
 		"ethers": "5.7.2",
 		"mathjs": "10.5.2",
