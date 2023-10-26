@@ -2087,10 +2087,10 @@
   dependencies:
     "@types/node" "*"
 
-"@types/deep-equal@1.0.2":
-  version "1.0.2"
-  resolved "https://registry.yarnpkg.com/@types/deep-equal/-/deep-equal-1.0.2.tgz#a2938de0c029bddd1fe00be9498969e2228df2db"
-  integrity sha512-pjMMQWhqEKL/rxzUWQKpnbM2oFhRIx4kJ/7mH7MtbJWOA0yrZK0h4WA+RgKa70IHS9amWT7+jvmVmEcL2nXm3A==
+"@types/deep-equal@1.0.3":
+  version "1.0.3"
+  resolved "https://registry.yarnpkg.com/@types/deep-equal/-/deep-equal-1.0.3.tgz#f8315c99a85cc7a286b15cd9cac5e4a52e98d59d"
+  integrity sha512-xP1pB67eLrRdMLKpXUXhYN/3uiJN1gNalcVOSY5kdJbxhGuZTTE8awSWOD9LCJDzQZVsuZZcnMMLRrbf+nOUSQ==
 
 "@types/estree@*":
   version "0.0.47"
