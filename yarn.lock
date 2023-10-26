@@ -2066,10 +2066,10 @@
   dependencies:
     ethers "^5.0.2"
 
-"@types/bent@7.3.5":
-  version "7.3.5"
-  resolved "https://registry.yarnpkg.com/@types/bent/-/bent-7.3.5.tgz#0676776c1ea70bed464234435b80a6acbc8d9c7d"
-  integrity sha512-7PTYvy4UERqRPwlz/2KMXyCu08JpvN+SHBOH1Kzp+haZFsX1xrC+RI5qFVERTIDp1XoA+VnfatRmSM7x/0p3vw==
+"@types/bent@7.3.6":
+  version "7.3.6"
+  resolved "https://registry.yarnpkg.com/@types/bent/-/bent-7.3.6.tgz#eafdf3d63bb3af340f6952dfdc4671e84110962d"
+  integrity sha512-zuf10dcmxvseGtjb7EgGgBKZ+qydaH3QyXVSVOtAj3Ng2+I+dVgSO6TQbn6T3bF2jpAGa7WoJynpL29qJ1VMFg==
   dependencies:
     "@types/node" "*"
 
