@@ -2075,10 +2075,10 @@
   dependencies:
     ethers "^5.0.2"
 
-"@types/bent@7.3.6":
-  version "7.3.6"
-  resolved "https://registry.yarnpkg.com/@types/bent/-/bent-7.3.6.tgz#eafdf3d63bb3af340f6952dfdc4671e84110962d"
-  integrity sha512-zuf10dcmxvseGtjb7EgGgBKZ+qydaH3QyXVSVOtAj3Ng2+I+dVgSO6TQbn6T3bF2jpAGa7WoJynpL29qJ1VMFg==
+"@types/bent@7.3.8":
+  version "7.3.8"
+  resolved "https://registry.yarnpkg.com/@types/bent/-/bent-7.3.8.tgz#69c3ee49bf6593d831006794e7bd2f84bb573e58"
+  integrity sha512-yZ09JA1KsA5Fl6Oh/ahK00+H5bV0qCy2bYnyfiFY42wnaMK4n7IDC6HaFe3WW45Zhnak7iqJBKlWD0nVxzrGWg==
   dependencies:
     "@types/node" "*"
 
