@@ -20,7 +20,7 @@
 		"@devprotocol/dev-kit": "8.6.0",
 		"@devprotocol/khaos-core": "1.6.0",
 		"@types/bent": "7.3.8",
-		"@types/mathjs": "9.4.1",
+		"@types/mathjs": "9.4.2",
 		"@types/sinon": "10.0.20",
 		"bent": "7.3.12",
 		"bignumber.js": "9.1.2",
