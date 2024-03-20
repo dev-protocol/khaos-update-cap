@@ -2130,10 +2130,10 @@
   resolved "https://registry.yarnpkg.com/@types/json-schema/-/json-schema-7.0.9.tgz#97edc9037ea0c38585320b28964dde3b39e4660d"
   integrity sha512-qcUXuemtEu+E5wZSJHNxUXeCZhAfXKQ41D+duX+VYPde7xyEVZci+/oXKJL13tnRs9lR2pr4fod59GT6/X1/yQ==
 
-"@types/mathjs@9.4.1":
-  version "9.4.1"
-  resolved "https://registry.yarnpkg.com/@types/mathjs/-/mathjs-9.4.1.tgz#ed94067c40d9496cfd6041f37aeaa5dd516453b7"
-  integrity sha512-pEvgJ9c0LkVSZODbBuxeFngyhg/xMpZElcmvtFLayUXEgt6I4fGcMaxlPspV4kIMucmY6W4YwmtaWyTAQpqsrQ==
+"@types/mathjs@9.4.2":
+  version "9.4.2"
+  resolved "https://registry.yarnpkg.com/@types/mathjs/-/mathjs-9.4.2.tgz#beec20340d768171fed8331b08fb321d218ec6e1"
+  integrity sha512-GF5g1vJmvKdWIWsE53XX7EDAyCaZ9p6gaYm1xhlXn5JjrY/NJrOfJN3fBxS3wyZpVh3QqKoMkS2WjFwxWMHOTw==
   dependencies:
     mathjs "*"
 
