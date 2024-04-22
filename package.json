@@ -30,7 +30,7 @@
 		"ramda": "0.29.1"
 	},
 	"devDependencies": {
-		"@ava/typescript": "1.1.1",
+		"@ava/typescript": "4.1.0",
 		"@pinata/sdk": "^2.1.0",
 		"@rollup/plugin-commonjs": "25.0.7",
 		"@rollup/plugin-inject": "5.0.5",
