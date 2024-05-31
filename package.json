@@ -26,7 +26,7 @@
 		"bignumber.js": "9.1.2",
 		"cross-fetch": "4.0.0",
 		"ethers": "5.7.2",
-		"mathjs": "12.4.1",
+		"mathjs": "12.4.3",
 		"ramda": "0.29.1"
 	},
 	"devDependencies": {
