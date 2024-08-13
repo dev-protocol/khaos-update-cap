@@ -932,15 +932,15 @@
   dependencies:
     arrify "^1.0.1"
 
-"@devprotocol/dev-kit@8.6.0":
-  version "8.6.0"
-  resolved "https://registry.yarnpkg.com/@devprotocol/dev-kit/-/dev-kit-8.6.0.tgz#da969de08b1e9d8fee44d9f9156a7542d8fc95f3"
-  integrity sha512-9u5YAn+GptEHsYulkSCojkDIqCHFVZnvETfP/nN/CQnuP9KjS7Aq64y2SiQz79rzLXDEIqxrCUHX9DUFqi6aWA==
+"@devprotocol/dev-kit@8.7.0":
+  version "8.7.0"
+  resolved "https://registry.yarnpkg.com/@devprotocol/dev-kit/-/dev-kit-8.7.0.tgz#ba802516ab5a08e699f3cc85aaf72deec566b555"
+  integrity sha512-xJ/jVQJDHEc1XuAp1mJsn7JdAwdshAykX7ErsNG6FkQzjq/i6OmR7jFAIsBHq8AB+ZaMCUuXm1f9QBypF5yG4A==
   dependencies:
     "@devprotocol/util-ts" "4.0.0"
     bignumber.js "9.1.2"
     js-base64 "^3.7.2"
-    ramda "^0.29.0"
+    ramda "^0.30.0"
 
 "@devprotocol/khaos-core@1.6.0":
   version "1.6.0"
@@ -10666,6 +10666,11 @@ ramda@^0.29.0:
   version "0.29.0"
   resolved "https://registry.yarnpkg.com/ramda/-/ramda-0.29.0.tgz#fbbb67a740a754c8a4cbb41e2a6e0eb8507f55fb"
   integrity sha512-BBea6L67bYLtdbOqfp8f58fPMqEwx0doL+pAi8TZyp2YWz8R9G8z9x75CZI8W+ftqhFHCpEX2cRnUUXK130iKA==
+
+ramda@^0.30.0:
+  version "0.30.1"
+  resolved "https://registry.yarnpkg.com/ramda/-/ramda-0.30.1.tgz#7108ac95673062b060025052cd5143ae8fc605bf"
+  integrity sha512-tEF5I22zJnuclswcZMc8bDIrwRHRzf+NqVEmqg50ShAZMP7MWeR/RGDthfM/p+BlqvF2fXAzpn8i+SJcYD3alw==
 
 randombytes@^2.0.0, randombytes@^2.0.1, randombytes@^2.0.5, randombytes@^2.0.6, randombytes@^2.1.0:
   version "2.1.0"
